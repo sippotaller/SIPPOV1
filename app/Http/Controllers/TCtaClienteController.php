@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class CtaClienteController extends Controller
+class TCtaClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,7 @@ class CtaClienteController extends Controller
      */
     public function create()
     {
-        //
+        return view("Forms/NuevoCliente");
     }
 
     /**

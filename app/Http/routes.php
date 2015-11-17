@@ -27,10 +27,10 @@ $router->controller('Producto/CatProducto', 'TCatProductoController');
 
 
 $router->get('Cliente', function() {
- 	$personas=TPersona::all();
+ 	$personas=TPersona::paginate(2);
 	return view("Forms/Cliente",["personas"=>$personas]);
 });
 
 // $router->controller('Cliente/Persona', 'PersonaController');
-// $router->controller('Cliente/CtaCliente', 'CtaClienteController');
+$router->resource('Cliente/CtaCliente', 'TCtaClienteController');
 // $router->controller('Cliente/CatCliente', 'CatClienteController');

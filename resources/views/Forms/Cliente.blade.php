@@ -63,9 +63,13 @@
                                     <input type="search" placeholder="Buscar..." class="form-control">
                                 </div>
                                 <div class="col-xs-2 pad">
-                                    <a href="#nuevocliente" class="btn btn-plus btn-primary">
+                                    <!--a href="#nuevocliente" class="btn btn-plus btn-primary">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                    </a-->
+                                    <a href="{{ route('Cliente.CtaCliente.create') }}" class="btn btn-plus btn-primary">
                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                     </a>
+
                                 </div>
                             </div>
                             <div class="box-body table-responsive">
@@ -118,7 +122,8 @@
                                             </tr> -->
                                         </tbody>
                                     </table>
-                                    <div class="row">
+                                     {!! $personas->setPath('')->render() !!}﻿
+                                    <!--div class="row">
                                         <div class="pull-right">
                                             <div class="col-xs-12">
                                                 <ul class="pagination">
@@ -132,7 +137,7 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div-->
                                 </div>
                             </div>
                         </div>
