@@ -1,3 +1,9 @@
+
+
+
+
+@extends("index")
+@section("NuevoCliente")
  <section class="content-header">
     <h1>
         Clientes
@@ -24,7 +30,7 @@
 		                    <div class="form-group-lg" style="padding-bottom:90px;">
 		                        <div class="col-sm-4" >
 		                            <!-- <img class="img-responsive" src="img/camara.png" width="50px"> -->
-		                            <img src="img/client.png" class="img-circle" width="80px">
+		                            {!!HTML::image("img/client.png","alt",["class"=>"img-circle","width"=>"80px"])!!}
 		                        </div>
 		                        <div class="col-xs-12 col-sm-8" style="padding-top:25px;">                
 		                            <input class="form-control" type="text" placeholder="Nombre">
@@ -115,10 +121,14 @@
 		                </form>
 		            </div>
 		            <div class="col-xs-6 col-sm-1" style="opacity:60%">
-		                <img class="img-responsive" src="img/reload.png" width="40px" >                    
+		            	<button>
+		            	{!!HTML::image("img/reload.png","alt",["width"=>"40px"])!!}
+						</button>
+		                
 		            </div>
 		            <div class="col-xs-6 col-sm-1" style="opacity:60%">
-		                <img class="img-responsive" src="img/save.png" width="60px" >
+		            	{!!HTML::image("img/save.png","alt",["width"=>"60px"])!!}
+		                
 		            </div>               
 		        </div>      
 		        </div>    
@@ -126,3 +136,4 @@
 		</div>
 	</div>
 </section>
+@stop

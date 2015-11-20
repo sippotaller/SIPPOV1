@@ -9,7 +9,7 @@
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="css/Formularios.css" type="text/css" rel="stylesheet">
     </head>
-    <body>-->
+    <body>
         <!--
         <div class="modulo">
             <div class="row">
@@ -63,7 +63,7 @@
                                     <input type="search" placeholder="Buscar..." class="form-control">
                                 </div>
                                 <div class="col-xs-2 pad">
-                                    <a href="#nuevocliente" class="btn btn-plus btn-primary">
+                                    <a href={{route("Cliente.create")}} class="btn btn-plus btn-primary">
                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                     </a>
                                 </div>

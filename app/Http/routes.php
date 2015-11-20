@@ -10,7 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-use App\model\TPersona;
+
 
 Route::get('/', function () {
     return view('index');
@@ -19,17 +19,14 @@ Route::get('/', function () {
 $router->get('Producto', function() {
 	return view("Forms/Producto");
 });
-$router->controller('Producto/Segmento', 'TSegmentoController');
-$router->controller('Producto/Familia', 'TFamiliaController');
-$router->controller('Producto/Clase', 'TClaseController');
-$router->controller('Producto/TipoProducto', 'TTipoProductoController');
-$router->controller('Producto/CatProducto', 'TCatProductoController');
+$router->resource('Producto/Segmento', 'TSegmentoController');
+$router->resource('Producto/Familia', 'TFamiliaController');
+$router->resource('Producto/Clase', 'TClaseController');
+$router->resource('Producto/TipoProducto', 'TTipoProductoController');
+$router->resource('Producto/CatProducto', 'TCatProductoController');
 
 
-$router->get('Cliente', function() {
- 	$personas=TPersona::all();
-	return view("Forms/Cliente",["personas"=>$personas]);
-});
+$router->resource('Cliente', 'CtaClienteController');
 
 // $router->controller('Cliente/Persona', 'PersonaController');
 // $router->controller('Cliente/CtaCliente', 'CtaClienteController');

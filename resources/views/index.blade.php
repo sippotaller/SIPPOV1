@@ -9,30 +9,30 @@
         <title>AdminLTE | Dashboard</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        {!!HTML::style("css/bootstrap.min.css")!!}
         <!-- font Awesome -->
-        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        {!!HTML::style("css/font-awesome.min.css")!!}
         <!-- Ionicons -->
-        <link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        {!!HTML::style("css/ionicons.min.css")!!}
         <!-- Morris chart -->
-        <link href="css/morris/morris.css" rel="stylesheet" type="text/css" />
+        {!!HTML::style("css/morris/morris.css")!!}
         <!-- jvectormap -->
-        <link href="css/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+        {!!HTML::style("css/jvectormap/jquery-jvectormap-1.2.2.css")!!}
         <!-- fullCalendar -->
-        <link href="css/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
+        {!!HTML::style("css/fullcalendar/fullcalendar.css")!!}
         <!-- Daterange picker -->
-        <link href="css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+        {!!HTML::style("css/daterangepicker/daterangepicker-bs3.css")!!}
         <!-- bootstrap wysihtml5 - text editor -->
-        <link href="css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+        {!!HTML::style("css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")!!}
         <!-- Theme style -->
-        <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        {!!HTML::style("css/AdminLTE.css")!!}
 
-        <link rel="stylesheet" href="css/Formularios.css">
+        {!!HTML::style("css/Formularios.css")!!}
         
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js")
           <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
     </head>
@@ -43,7 +43,8 @@
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                
                 <div>
-                <img src="img/icono_SIPPO.png" alt="Logo" width="90px"/>
+
+                 {!!HTML::image("img/icono_SIPPO.png" ,"alt",array('height'=>"40px"))!!}
                 </div>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
@@ -71,7 +72,8 @@
                                         <li><!-- start message -->
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="img/avatar3.png" class="img-circle" alt="User Image"/>
+                                                    {!!HTML::image("img/avatar3.png" ,"alt",array("class"=>"img-circle"))!!}
+                                                    
                                                 </div>
                                                 <h4>
                                                     Erick Bedoya
@@ -83,7 +85,8 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="img/avatar2.png" class="img-circle" alt="user image"/>
+                                                    {!!HTML::image("img/avatar2.png" ,"alt",array("class"=>"img-circle"))!!}
+                                                    
                                                 </div>
                                                 <h4>
                                                     AdminLTE Design Team
@@ -95,7 +98,8 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="img/avatar.png" class="img-circle" alt="user image"/>
+                                                    {!!HTML::image("img/avatar.png" ,"alt",array("class"=>"img-circle"))!!}
+                                                    
                                                 </div>
                                                 <h4>
                                                     Developers
@@ -107,7 +111,8 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="img/avatar2.png" class="img-circle" alt="user image"/>
+                                                    {!!HTML::image("img/avatar2.png" ,"alt",array("class"=>"img-circle"))!!}
+                                                    
                                                 </div>
                                                 <h4>
                                                     Sales Department
@@ -119,7 +124,8 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="img/avatar.png" class="img-circle" alt="user image"/>
+                                                    {!!HTML::image("img/avatar.png" ,"alt",array("class"=>"img-circle"))!!}
+                                                    
                                                 </div>
                                                 <h4>
                                                     Reviewers
@@ -254,7 +260,8 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
-                                    <img src="img/avatar3.png" class="img-circle" alt="User Image" />
+                                    {!!HTML::image("img/avatar3.png" ,"alt",array("class"=>"img-circle"))!!}
+                                    
                                     <p>
                                         Daniel Moreno - Administrador
                                         <small>Member since Nov. 2012</small>
@@ -296,7 +303,8 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="img/avatar3.png" class="img-circle" alt="User Image" />
+                            {!!HTML::image("img/avatar3.png" ,"alt",array("class"=>"img-circle"))!!}
+                            
                         </div>
                         <div class="pull-left info">
                             <p>Hola, Daniel</p>
@@ -330,7 +338,7 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#cliente"><i class="fa fa-angle-double-right"></i> Clientes</a></li>
+                                <li><a href={{route("Cliente.index")}}><i class="fa fa-angle-double-right"></i> Clientes</a></li>
                                 <li><a href="#pedidos"><i class="fa fa-angle-double-right"></i> Pedidos</a></li>
                                 <li><a href="Views/PuntoVenta.html"><i class="fa fa-angle-double-right"></i> Punto de Venta <i class="fa fa-external-link-square"></i></a></li>
                             </ul>
@@ -487,7 +495,8 @@
                 @show
                 @section("Cliente")
                 @show
-
+                @section("NuevoCliente")
+                @show
 
                 <!-- 
                 <section class="content-header">
@@ -521,39 +530,39 @@
         
 
         <!-- jQuery 2.0.2 -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
-        <script src="js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="js/Angularjs/lib/underscore-min.js"></script>
-        <script src="js/Angularjs/lib/angular.min.js"></script>
-        <script src="js/Angularjs/lib/angular-route.min.js"></script>
-        <script src="js/Angularjs/app.js"></script>
-        <script src="js/Angularjs/controllers.js"></script>
+        {!!HTML::script("js/jquery.min.js")!!}
+        {!!HTML::script("js/jquery-ui-1.10.3.min.js")!!}
+        {!!HTML::script("js/bootstrap.min.js")!!}
+        {!!HTML::script("js/Angularjs/lib/underscore-min.js")!!}
+        {!!HTML::script("js/Angularjs/lib/angular.min.js")!!}
+        {!!HTML::script("js/Angularjs/lib/angular-route.min.js")!!}
+        {!!HTML::script("js/Angularjs/app.js")!!}
+        {!!HTML::script("js/Angularjs/controllers.js")!!}
 
         <!-- Morris.js charts -->
-        <script src="js/raphael-min.js"></script>
-        <script src="js/plugins/morris/morris.min.js" type="text/javascript"></script>
+        {!!HTML::script("js/raphael-min.js")!!}
+        {!!HTML::script("js/plugins/morris/morris.min.js")!!}
         <!-- Sparkline -->
-        <script src="js/plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+        {!!HTML::script("js/plugins/sparkline/jquery.sparkline.min.js")!!}
         <!-- jvectormap -->
-        <script src="js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
-        <script src="js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
+        {!!HTML::script("js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js")!!}
+        {!!HTML::script("js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js")!!}
         <!-- fullCalendar -->
-        <script src="js/plugins/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
+        {!!HTML::script("js/plugins/fullcalendar/fullcalendar.min.js")!!}
         <!-- jQuery Knob Chart -->
-        <script src="js/plugins/jqueryKnob/jquery.knob.js" type="text/javascript"></script>
+        {!!HTML::script("js/plugins/jqueryKnob/jquery.knob.js")!!}
         <!-- daterangepicker -->
-        <script src="js/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+        {!!HTML::script("js/plugins/daterangepicker/daterangepicker.js")!!}
         <!-- Bootstrap WYSIHTML5 -->
-        <script src="js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
+        {!!HTML::script("js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")!!}
         <!-- iCheck -->
-        <script src="js/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+        {!!HTML::script("js/plugins/iCheck/icheck.min.js")!!}
 
         <!-- AdminLTE App -->
-        <script src="js/AdminLTE/app.js" type="text/javascript"></script>
+        {!!HTML::script("js/AdminLTE/app.js")!!}
         
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <script src="js/AdminLTE/dashboard.js" type="text/javascript"></script>        
+        {!!HTML::script("js/AdminLTE/dashboard.js")!!}    
         
        
         
