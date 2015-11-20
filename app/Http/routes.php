@@ -26,8 +26,9 @@ $router->resource('Producto/TipoProducto', 'TTipoProductoController');
 $router->resource('Producto/CatProducto', 'TCatProductoController');
 
 
+
 $router->resource('Cliente', 'CtaClienteController');
 
 // $router->controller('Cliente/Persona', 'PersonaController');
-// $router->controller('Cliente/CtaCliente', 'CtaClienteController');
+$router->resource('Cliente/CtaCliente', 'TCtaClienteController');
 // $router->controller('Cliente/CatCliente', 'CatClienteController');

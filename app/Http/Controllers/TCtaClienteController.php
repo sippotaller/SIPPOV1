@@ -7,7 +7,7 @@ use App\model\TPersona;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class CtaClienteController extends Controller
+class TCtaClienteController extends Controller
 {
     /**
      * Display a listing of the resource.

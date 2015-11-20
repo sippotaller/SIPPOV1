@@ -495,8 +495,12 @@
                 @show
                 @section("Cliente")
                 @show
+
+
                 @section("NuevoCliente")
                 @show
+
+
 
                 <!-- 
                 <section class="content-header">
