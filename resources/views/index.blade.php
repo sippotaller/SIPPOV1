@@ -500,6 +500,11 @@
                 @section("NuevoCliente")
                 @show
 
+                @section("Usuario")
+                @show
+
+                @section("NuevoUsuario")
+                @show
 
 
                 <!-- 

@@ -32,3 +32,4 @@ $router->resource('Cliente', 'CtaClienteController');
 // $router->controller('Cliente/Persona', 'PersonaController');
 $router->resource('Cliente/CtaCliente', 'TCtaClienteController');
 // $router->controller('Cliente/CatCliente', 'CatClienteController');
+$router->resource('Usuario','UsersController');
