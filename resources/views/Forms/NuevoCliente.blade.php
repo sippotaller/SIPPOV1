@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 
-
-
-
-=======
->>>>>>> e433d576e0610b14d2a5f05e32a667cc93811606
 @extends("index")
 @section("NuevoCliente")
  <section class="content-header">
@@ -29,15 +23,15 @@
 		        <div class="row" >
 		        <div class="container-fluid formulario">
 		            <div class="col-sm-6">
-		                <!--form role="form">
+		                <form role="form">
 		                    <div class="form-group-lg" style="padding-bottom:90px;">
 		                        <div class="col-sm-4" >
-<<<<<<< HEAD
+
 		                            <!-- <img class="img-responsive" src="img/camara.png" width="50px"> -->
 		                            {!!HTML::image("img/client.png","alt",["class"=>"img-circle","width"=>"80px"])!!}
-=======
+
 		                            <img src="img/client.png" class="img-circle" width="80px">
->>>>>>> e433d576e0610b14d2a5f05e32a667cc93811606
+
 		                        </div>
 		                        <div class="col-xs-12 col-sm-8" style="padding-top:25px;">                
 		                            <input class="form-control" type="text" placeholder="Nombre">

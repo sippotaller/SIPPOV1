@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\model\TClase;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use DB;
 class TClaseController extends Controller
 {
     /**
@@ -16,7 +16,7 @@ class TClaseController extends Controller
      */
     public function index()
     {
-        //
+        return view("Forms/Productos/Clase",["Clase"=>TClase::all()]);
     }
 
     /**
@@ -46,9 +46,9 @@ class TClaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($codFamilia)
     {
-        //
+        
     }
 
     /**

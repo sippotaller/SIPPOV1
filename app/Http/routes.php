@@ -16,19 +16,18 @@ Route::get('/', function () {
     return view('index');
 });
 
-$router->get('Producto', function() {
-	return view("Forms/Producto");
-});
-$router->resource('Producto/Segmento', 'TSegmentoController');
-$router->resource('Producto/Familia', 'TFamiliaController');
-$router->resource('Producto/Clase', 'TClaseController');
-$router->resource('Producto/TipoProducto', 'TTipoProductoController');
-$router->resource('Producto/CatProducto', 'TCatProductoController');
 
-
+$router->resource('Segmento', 'TSegmentoController');
+$router->resource('Familia', 'TFamiliaController');
+$router->resource('Clase', 'TClaseController');
+$router->resource('TipoProducto', 'TTipoProductoController');
+$router->controller('CatProducto', 'TCatProductoController',
+	["getIndex"=>"CatProducto"
+	,"getCreate"=>"CatProducto.create"
+	,"getFamilia"=>"CatProducto.familia"
+	,"getClase"=>"CatProducto.clase"
+	,"getTipoProducto"=>"CatProducto.tipoproducto"
+	,"getUnidadMedida"=>"CatProducto.unidadmedida"]);
 
 $router->resource('Cliente', 'CtaClienteController');
-
-// $router->controller('Cliente/Persona', 'PersonaController');
 $router->resource('Cliente/CtaCliente', 'TCtaClienteController');
-// $router->controller('Cliente/CatCliente', 'CatClienteController');
