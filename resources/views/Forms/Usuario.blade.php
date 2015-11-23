@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="pull-right">
-                                        <a href="{{route(Usuario.create)}}" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                                        <a href={{route("Usuario.create")}} class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                                     </div>
                                 </div>
                             </div>

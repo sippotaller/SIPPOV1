@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\model\TSegmento;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +16,7 @@ class TSegmentoController extends Controller
      */
     public function index()
     {
-        //
+        return view("Forms/Productos/Segmento",["Segmento"=>TSegmento::all()]);
     }
 
     /**

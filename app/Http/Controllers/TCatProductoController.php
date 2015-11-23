@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\model\VCatalogoProductos;
+use App\model\TUnidadMedida;
+use App\model\TSegmento;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use DB;
 class TCatProductoController extends Controller
 {
     /**
@@ -14,9 +16,9 @@ class TCatProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getIndex()
     {
-        //
+        return view("Forms/Productos/CatProductos",["CatalogoProductos"=>VCatalogoProductos::all()]);
     }
 
     /**
@@ -24,9 +26,10 @@ class TCatProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function getCreate()
+    {   
+        $Segmentos=DB::table("TSegmento")->get();
+        return view("Forms/Productos/CreateCatProducto",["Segmento"=>$Segmentos]);
     }
 
     /**
@@ -48,7 +51,7 @@ class TCatProductoController extends Controller
      */
     public function show($id)
     {
-        //
+        return $id;
     }
 
     /**
@@ -84,4 +87,20 @@ class TCatProductoController extends Controller
     {
         //
     }
+    public function getFamilia($codSegmento){
+        return DB::table("TFamilia")->where("codSegmento","=",$codSegmento)->get();
+    }
+    public function getClase($codClase){
+        return DB::table("TClase")->where("codFamilia","=",$codClase)->get();
+    }
+    public function getTipoProducto($codClase){
+        return DB::table("TTipoProducto")->where("codClase","=",$codClase)->get();
+    }
+    public function getUnidadMedida($codUM){
+        return DB::table("TUnidadMedida")->where("codUM",'=',$codUM)->get();
+    }
+    public function getTipoCuantia($codTipoCuantia){
+        return DB::table("TTipoCuantia")->where("codTipoCuantia","=",$codTipoCuantia)->get();
+    }
+
 }

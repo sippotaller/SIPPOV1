@@ -28,6 +28,8 @@
         {!!HTML::style("css/AdminLTE.css")!!}
 
         {!!HTML::style("css/Formularios.css")!!}
+
+
         
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -169,7 +171,7 @@
                                         <li>
                                             <a href="#">
                                                 <i class="ion ion-ios7-cart success"></i> 25 sales made
-                   s                         </a>
+                                            </a>
                                         </li>
                                         <li>
                                             <a href="#">
@@ -356,17 +358,6 @@
                             </ul>
                         </li> 
                         
-                        <!-- <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-barcode"></i>
-                                <span>Productos</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#catalogoproductos"><i class="fa fa-angle-double-right"></i> Productos</a></li>
-                                <li><a href="#inventario"><i class="fa fa-angle-double-right"></i> Inventario</a></li>
-                            </ul>
-                        </li>  -->
                         <li class="treeview">
                             <a href="#">
                                 <i class="fa fa-cog"></i>
@@ -374,10 +365,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#catalogoproductos"><i class="fa fa-angle-double-right"></i>Catálogo de Productos</a></li>
+                                <li><a href={{route("CatProducto")}}><i class="fa fa-angle-double-right"></i>Catálogo de Productos</a></li>
                                 <li><a href="#catalogoclientes"><i class="fa fa-angle-double-right"></i>Catálogo de Clientes</a></li>
-                                <!-- <li><a href="#catalogoproveedores"><i class="fa fa-angle-double-right"></i>Catálogo de Proveedores</a></li>
-                                <li><a href="#formapago"><i class="fa fa-angle-double-right"></i>Forma de Pago</a></li> -->
                             </ul>
                         </li> 
                         <li class="treeview">
@@ -387,104 +376,11 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#asignarpermisos"><i class="fa fa-angle-double-right"></i> Asignar Permisos</a></li>
-                                <li><a href="#usuarios"><i class="fa fa-angle-double-right"></i> Usuarios</a></li>
+                                <li><a href={{route("AsignarPermisos.index")}}><i class="fa fa-angle-double-right"></i> Asignar Permisos</a></li>
+                                <li><a href={{route("Usuario.index")}}><i class="fa fa-angle-double-right"></i> Usuarios</a></li>
                             </ul>
                         </li> 
-                        <!-- Widget -->
-                        <!-- <li>
-                            <a href="pages/widgets.html">
-                                <i class="fa fa-th"></i> <span>Widgets</span> <small class="badge pull-right bg-green">new</small>
-                            </a>
-                        </li> -->
-
-                        <!-- Charts -->
-                        <!-- <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-bar-chart-o"></i>
-                                <span>Charts</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="pages/charts/morris.html"><i class="fa fa-angle-double-right"></i> Morris</a></li>
-                                <li><a href="pages/charts/flot.html"><i class="fa fa-angle-double-right"></i> Flot</a></li>
-                                <li><a href="pages/charts/inline.html"><i class="fa fa-angle-double-right"></i> Inline charts</a></li>
-                            </ul>
-                        </li> -->
-
-                        <!-- UI Elements -->
-                       <!--  <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-laptop"></i>
-                                <span>UI Elements</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="pages/UI/general.html"><i class="fa fa-angle-double-right"></i> General</a></li>
-                                <li><a href="pages/UI/icons.html"><i class="fa fa-angle-double-right"></i> Icons</a></li>
-                                <li><a href="pages/UI/buttons.html"><i class="fa fa-angle-double-right"></i> Buttons</a></li>
-                                <li><a href="pages/UI/sliders.html"><i class="fa fa-angle-double-right"></i> Sliders</a></li>
-                                <li><a href="pages/UI/timeline.html"><i class="fa fa-angle-double-right"></i> Timeline</a></li>
-                            </ul>
-                        </li> -->
-
-                        <!-- Forms -->
-                        <!-- <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-edit"></i> <span>Forms</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="pages/forms/general.html"><i class="fa fa-angle-double-right"></i> General Elements</a></li>
-                                <li><a href="pages/forms/advanced.html"><i class="fa fa-angle-double-right"></i> Advanced Elements</a></li>
-                                <li><a href="pages/forms/editors.html"><i class="fa fa-angle-double-right"></i> Editors</a></li>
-                            </ul>
-                        </li> -->
-
-                        <!-- Tables -->
-                        <!-- <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-table"></i> <span>Tables</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="pages/tables/simple.html"><i class="fa fa-angle-double-right"></i> Simple tables</a></li>
-                                <li><a href="pages/tables/data.html"><i class="fa fa-angle-double-right"></i> Data tables</a></li>
-                            </ul>
-                        </li> -->
-
-                        <!-- Calendar -->
-                        <!-- <li>
-                            <a href="pages/calendar.html">
-                                <i class="fa fa-calendar"></i> <span>Calendar</span>
-                                <small class="badge pull-right bg-red">3</small>
-                            </a>
-                        </li> -->
-
-                        <!-- MailBox -->
-                        <!-- <li>
-                            <a href="pages/mailbox.html">
-                                <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                                <small class="badge pull-right bg-yellow">12</small>
-                            </a>
-                        </li> -->
-
-                        <!-- Examples -->
-                        <!-- <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-folder"></i> <span>Examples</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="pages/examples/invoice.html"><i class="fa fa-angle-double-right"></i> Invoice</a></li>
-                                <li><a href="pages/examples/login.html"><i class="fa fa-angle-double-right"></i> Login</a></li>
-                                <li><a href="pages/examples/register.html"><i class="fa fa-angle-double-right"></i> Register</a></li>
-                                <li><a href="pages/examples/lockscreen.html"><i class="fa fa-angle-double-right"></i> Lockscreen</a></li>
-                                <li><a href="pages/examples/404.html"><i class="fa fa-angle-double-right"></i> 404 Error</a></li>
-                                <li><a href="pages/examples/500.html"><i class="fa fa-angle-double-right"></i> 500 Error</a></li>
-                                <li><a href="pages/examples/blank.html"><i class="fa fa-angle-double-right"></i> Blank Page</a></li>
-                            </ul>
-                        </li> -->
+                       
                     </ul>
                 </section>
                 <!-- /.sidebar -->
@@ -496,9 +392,11 @@
                 @section("Cliente")
                 @show
 
+                
 
                 @section("NuevoCliente")
                 @show
+
 
                 @section("Usuario")
                 @show
@@ -506,28 +404,22 @@
                 @section("NuevoUsuario")
                 @show
 
+                @section("Clase")
+                @show
 
-                <!-- 
-                <section class="content-header">
-                    <h1>
-                        Dashboard
-                        <small>Control panel</small>
-                    </h1>
-                    <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li class="active">Dashboard</li>
-                    </ol>
-                </section>
+                @section("AsignarPermisos")
+                @show
+                
+                @Section("Segmento")
 
-                <section class="content">
-                    <div class="row">
-                        <div class="span12">
-                           
-                          <div class="well" ng-view></div>
+                @show
 
-                        </div>
-                    </div>
-                </section> -->
+                @section('CatProductos')
+                @show
+
+                @section("CreateCatProducto")
+                @show
+               
 
 
             </aside>
@@ -541,6 +433,7 @@
         <!-- jQuery 2.0.2 -->
         {!!HTML::script("js/jquery.min.js")!!}
         {!!HTML::script("js/jquery-ui-1.10.3.min.js")!!}
+        {!!HTML::script("js/Producto/CreateProducto.js")!!}
         {!!HTML::script("js/bootstrap.min.js")!!}
         {!!HTML::script("js/Angularjs/lib/underscore-min.js")!!}
         {!!HTML::script("js/Angularjs/lib/angular.min.js")!!}

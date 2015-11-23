@@ -1,4 +1,5 @@
-
+@extends("index")
+@section("AsignarPermisos")
 
  <section class="content-header">
     <h1>
@@ -108,3 +109,5 @@ s
 
 	</div>
 </div>
+
+@stop
