@@ -341,7 +341,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href={{route("Cliente.CtaCliente.index")}}><i class="fa fa-angle-double-right"></i> Clientes</a></li>
-                                <li><a href="#pedidos"><i class="fa fa-angle-double-right"></i> Pedidos</a></li>
+                                <li><a href="{{ route('Pedido.index') }}"><i class="fa fa-angle-double-right"></i> Pedidos</a></li>
                                 <li><a href="Views/PuntoVenta.html"><i class="fa fa-angle-double-right"></i> Punto de Venta <i class="fa fa-external-link-square"></i></a></li>
                             </ul>
                         </li>
@@ -366,7 +366,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href={{route("CatProducto")}}><i class="fa fa-angle-double-right"></i>Catálogo de Productos</a></li>
-                                <li><a href="#catalogoclientes"><i class="fa fa-angle-double-right"></i>Catálogo de Clientes</a></li>
+                                <li><a href="{{ route('CatCliente.index') }}"><i class="fa fa-angle-double-right"></i>Catálogo de Clientes</a></li>
                             </ul>
                         </li> 
                         <li class="treeview">
