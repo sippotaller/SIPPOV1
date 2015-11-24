@@ -1,3 +1,6 @@
+@extends("index")
+@section("Pedidos")
+
 <section class="content-header">
     <h1>
         Pedidos
@@ -44,78 +47,17 @@
 								</tr>
 							</thead>
 							<tbody>
+								@foreach($pedidos as $pedido)
 								<tr>
-									<td><a href="#/pedidos/0002122">0002122 <i class="fa fa-external-link-square"></i></a></td>
-									<td>12/12/12</td>
-									<td>Pedro Dávila</td>
-									<td>Juan Pérez</td>
-									<td>TPV 102</td>
-									<td>S/. 1000</td>
-									<td>Pendiente</td>
+									<td><a href="{{ route('Pedido.show', $pedido->numero) }}">{{ $pedido->numero }}<i class="fa fa-external-link-square"></i></a></td>
+									<td>{{ $pedido->fecha }}</td>
+									<td>{{ $pedido->nombreCliente.' '.$pedido->apellidoPaternoCliente.' '.$pedido->apellidoMaternoCliente}}</td>
+									<td>{{ $pedido->nombreVendedor.' '.$pedido->apellidoPaternoVendedor.' '.$pedido->apellidoMaternoVendedor }}</td>
+									<td>{{ $pedido->canal }}</td>
+									<td>{{ $pedido->Monto }}</td>
+									<td>{{ $pedido->estado }}</td>
 								</tr>
-								<tr>
-									<td><a href="#/pedidos/0002122">0002122 <i class="fa fa-external-link-square"></i></a></td>
-									<td>12/12/12</td>
-									<td>Pedro Dávila</td>
-									<td>Boot</td>
-									<td>Web</td>
-									<td>S/. 1000</td>
-									<td>Pendiente</td>
-								</tr>
-								<tr>
-									<td><a href="#/pedidos/0002122">0002122 <i class="fa fa-external-link-square"></i></a></td>
-									<td>12/12/12</td>
-									<td>Luis Manturano</td>
-									<td>Jesus Taipe</td>
-									<td>TPV 100</td>
-									<td>S/. 1000</td>
-									<td>Pendiente</td>
-								</tr>
-								<tr>
-									<td><a href="#/pedidos/0002122">0002122 <i class="fa fa-external-link-square"></i></a></td>
-									<td>12/12/12</td>
-									<td>Brenda Zegarra</td>
-									<td>Juan Pérez</td>
-									<td>Call Center</td>
-									<td>S/. 2000</td>
-									<td>Pendiente</td>
-								</tr>
-								<tr>
-									<td><a href="#/pedidos/0002122">0002122 <i class="fa fa-external-link-square"></i></a></td>
-									<td>12/12/12</td>
-									<td>Romeo Santos</td>
-									<td>Juan Pérez</td>
-									<td>Call Center</td>
-									<td>S/. 1500</td>
-									<td>Entregado</td>
-								</tr>
-								<tr>
-									<td><a href="#/pedidos/0002122">0002122 <i class="fa fa-external-link-square"></i></a></td>
-									<td>12/12/12</td>
-									<td>Miguel Asturias</td>
-									<td>Boot</td>
-									<td>Web</td>
-									<td>S/. 1000</td>
-									<td>Pendiente</td>
-								</tr>
-								<tr>
-									<td><a href="#/pedidos/0002122">0002122 <i class="fa fa-external-link-square"></i></a></td>
-									<td>12/12/12</td>
-									<td>Pedro Dávila</td>
-									<td>Boot</td>
-									<td>Web</td>
-									<td>S/. 500</td>
-									<td>Pendiente</td>
-								</tr>
-								<tr>
-									<td><a href="#/pedidos/0002122">0002122 <i class="fa fa-external-link-square"></i></a></td>
-									<td>12/12/12</td>
-									<td>Pedro Dávila</td>
-									<td>Boot</td>
-									<td>Web</td>
-									<td>S/. 3200</td>
-									<td>Pendiente</td>
-								</tr>
+								@endforeach
 							</tbody>
 							<tfoot>
 								<tr>
@@ -129,9 +71,10 @@
 								</tr>
 							</tfoot>
 						</table>
+						 {!! $pedidos->setPath('')->render() !!}﻿
 				</div>
 			</div>
 		</div>
 	</div>
-
 </section>
+@stop

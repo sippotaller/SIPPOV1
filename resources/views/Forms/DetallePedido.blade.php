@@ -1,3 +1,5 @@
+@extends("index")
+@section("DetallePedido")
 <section class="content-header">
     <h1>
         Pedidos
@@ -29,19 +31,19 @@
 					<form role="form">
 						<div class="form-group">
 							<label for="">Nombres:</label>
-							<label for="">Pedro Dávila</label>
+							<label for="">{{ $detallePedido[0]->nombreCliente.' '.$detallePedido[0]->apellidoPaternoCliente.' '.$detallePedido[0]->apellidoMaternoCliente }}</label>
 						</div>
 						<div class="form-group">
 							<label for="">Teléfono:</label>
-							<label for="">(01) 6672321</label>
+							<label for="">(01) {{$detallePedido[0]->telefono}}</label>
 						</div>
 						<div class="form-group">
 							<label for="">Celular:</label>
-							<label for="">998764312</label>
+							<label for="">{{$detallePedido[0]->celular}}</label>
 						</div>
 						<div class="form-group">
 							<label for="">Correo:</label>
-							<label for="">pedrodavilo99@gmail.com</label>
+							<label for="">{{$detallePedido[0]->correo}}</label>
 						</div>
 					</form>
 				</div>
@@ -63,19 +65,19 @@
 					<form role="form">
 						<div class="form-group">
 							<label for="">Fecha de Pedido :</label>
-							<label for="">10/19/12</label>
+							<label for="">{{$detallePedido[0]->fecha}}</label>
 						</div>
 						<div class="form-group">
 							<label for="">Vendedor :</label>
-							<label for="">Erick, Bedoya</label>
+							<label for="">{{ $detallePedido[0]->nombreVendedor.' '.$detallePedido[0]->apellidoPaternoVendedor.' '.$detallePedido[0]->apellidoMaternoVendedor}}</label>
 						</div>
 						<div class="form-group">
 							<label for="">Canal :</label>
-							<label for="">PTV100</label>
+							<label for="">{{$detallePedido[0]->canal}}</label>
 						</div>
 						<div class="form-group">
 							<label for="">Monto :</label>
-							<label for="">S/. 2389.5</label>
+							<label for="">S/. {{$detallePedido[0]->Monto}}</label>
 						</div>
 					</form>
 				</div>
@@ -94,7 +96,7 @@
 					<form role="form" >
 						<div class="form-group">
 							<label for="numeropedido">Numero pedido: </label>
-							<label for=""><strong>0002122</strong></label>
+							<label for=""><strong>{{$detallePedido[0]->numero}}</strong></label>
 						</div>	
 						<div class="form-group">
 							<label for=""></label>
@@ -116,61 +118,19 @@
 							</tr>
 						</thead>
 						<tbody>
+							@foreach($detallePedido as $detalle)
 							<tr>
-								<td>14111514</td>
-								<td>Blocs o cuadernos de papel</td>
-								<td>S/. 100</td>
-								<td>S/. 4.5</td>
+								<td>{{$detalle->codigo}}</td>
+								<td>{{$detalle->descripcionProducto}}</td>
+								<td>{{$detalle->cantidad}}</td>
+								<td>S/. {{$detalle->precio}}</td>
 								<td>10%</td>
-								<td>S/. 405.00</td>
-								<td>S/. 72.9</td>
-								<th>S/. 477.9</th>
-								<td>Entregado</td>
+								<td>S/. {{$detalle->precio*$detalle->cantidad*0.9}}</td>
+								<td>S/. {{$detalle->precio*$detalle->cantidad*0.9*0.18}}</td>
+								<th>S/. {{$detalle->precio*$detalle->cantidad*0.9*0.82}}</th>
+								<td>{{$detalle->estado}}</td>
 							</tr>
-							<tr>
-								<td>14111514</td>
-								<td>Blocs o cuadernos de papel</td>
-								<td>S/. 100</td>
-								<td>S/. 4.5</td>
-								<td>10%</td>
-								<td>S/. 405.00</td>
-								<td>S/. 72.9</td>
-								<th>S/. 477.9</th>
-								<td>Entregado</td>
-							</tr>
-							<tr>
-								<td>14111514</td>
-								<td>Blocs o cuadernos de papel</td>
-								<td>S/. 100</td>
-								<td>S/. 4.5</td>
-								<td>10%</td>
-								<td>S/. 405.00</td>
-								<td>S/. 72.9</td>
-								<th>S/. 477.9</th>
-								<td>Entregado</td>
-							</tr>
-							<tr>
-								<td>14111514</td>
-								<td>Blocs o cuadernos de papel</td>
-								<td>S/. 100</td>
-								<td>S/. 4.5</td>
-								<td>10%</td>
-								<td>S/. 405.00</td>
-								<td>S/. 72.9</td>
-								<th>S/. 477.9</th>
-								<td>Entregado</td>
-							</tr>
-							<tr>
-								<td>14111514</td>
-								<td>Blocs o cuadernos de papel</td>
-								<td>S/. 100</td>
-								<td>S/. 4.5</td>
-								<td>10%</td>
-								<td>S/. 405.00</td>
-								<td>S/. 72.9</td>
-								<th>S/. 477.9</th>
-								<td>Entregado</td>
-							</tr>
+							@endforeach
 						</tbody>
 					</table>
 				</div>
@@ -178,6 +138,7 @@
 		</div>
 	</div>
 </section>
+@stop
 
 
 

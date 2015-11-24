@@ -340,7 +340,7 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href={{route("Cliente.index")}}><i class="fa fa-angle-double-right"></i> Clientes</a></li>
+                                <li><a href={{route("Cliente.CtaCliente.index")}}><i class="fa fa-angle-double-right"></i> Clientes</a></li>
                                 <li><a href="#pedidos"><i class="fa fa-angle-double-right"></i> Pedidos</a></li>
                                 <li><a href="Views/PuntoVenta.html"><i class="fa fa-angle-double-right"></i> Punto de Venta <i class="fa fa-external-link-square"></i></a></li>
                             </ul>
@@ -420,7 +420,17 @@
                 @section("CreateCatProducto")
                 @show
                
+                @section('EditarCliente')
+                @show
 
+                @section('Pedidos')
+                @show
+
+                @section('DetallePedido')
+                @show
+
+                @section("CatalogoClientes")
+                @show
 
             </aside>
         </div><!-- ./wrapper -->

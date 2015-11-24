@@ -4,10 +4,10 @@
     <head>
         <meta charset="utf-8">
         <title>Nuevo Cliente</title>
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="css/Formularios.css" type="text/css" rel="stylesheet">
+        {!! Html::script('js/bootstrap.min.js') !!}
+        {!! Html::script('js/jquery.min.js') !!}
+        {!! Html::style('css/bootstrap.min.css') !!}
+        {!! Html::style('css/Formularios.css') !!}
     </head>
     <body>
         <!--
@@ -59,19 +59,24 @@
                                     Lista de Clientes
                                     </h3>
                                 </div>
-                                <div class="col-xs-6 pad">
-                                    <input type="search" placeholder="Buscar..." class="form-control">
+                                {!! Form::open(['route' => 'Cliente.CtaCliente.index', 'method' => 'GET', 'role' => 'search']) !!}
+                                <div class="col-xs-6 pad form-group">
+                                    {!! Form::text('name', null, ['class' => 'form-control','placeholder' => 'Buscar...']) !!}
+                                     <!--button type="submit" class="btn btn-default">Buscar</button-->
                                 </div>
+                                {!! Form::close() !!}
+                                
                                 <div class="col-xs-2 pad">
-
-                                    <!-- <a href={{route("Cliente.create")}} class="btn btn-plus btn-primary"> -->
-
-
+                                    <a href="{{ route('Cliente.CtaCliente.create') }}" class="btn btn-plus btn-primary">
                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                     </a>
 
                                 </div>
                             </div>
+                            @if(Session::has('message'))
+                                <p class="alert alert-success">{{ Session::get('message') }}</p>
+                            @endif
+
                             <div class="box-body table-responsive">
                                 <div class="dataTables_wrapper form-inline" role="grid">
                                     
@@ -81,70 +86,64 @@
                                                 <th>Código</th>
                                                 <th>DNI</th>
                                                 <th>Nombre</th>
-                                                <th>Apellido Paterno</th>
-                                                <th>Apellido Materno</th>
+                                                <th>Celular</th>
+                                                <th>Correo</th>
+                                                <th>Descripción</th>
+                                                <th>Acciones</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach($personas as $persona)
-                                                <tr>
-                                                    <td>{{$persona->codPersona}}</td>
+                                                <tr data-id="{{ $persona->codigo }}">
+                                                    <td>{{$persona->codigo}}</td>
                                                     <td>{{$persona->dni}}</td>
-                                                    <td>{{$persona->nomb}}</td>
-                                                    <td>{{$persona->apPat}}</td>
-                                                    <td>{{$persona->apMat}}</td>
+                                                    <td>{{$persona->nombre.' '.$persona->apPat.' '.$persona->apMat}}</td>
+                                                    <td>{{$persona->celular}}</td>
+                                                    <td>{{$persona->correo}}</td>
+                                                    <td>{{$persona->descripcion}}</td>
+                                                    <td>
+                                                        <a href="{{ route('Cliente.CtaCliente.edit', $persona->codigo) }}">Editar</a>
+                                                        <!--a href="#!" class="btn-delete">Eliminar</a-->
+                                                    </td>
                                                 </tr>
                                             @endforeach
-                                            <!-- <tr>
-                                                <td><a href="#cliente/123">Jose Alvarado Santos</a></td>
-                                                <td>929872122</td>
-                                                <td>jose@alvarado.com</td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#cliente/123">Jose Alvarado Santos</a></td>
-                                                <td>929872122</td>
-                                                <td>jose@alvarado.com</td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#cliente/123">Jose Alvarado Santos</a></td>
-                                                <td>929872122</td>
-                                                <td>jose@alvarado.com</td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#cliente/123">Jose Alvarado Santos</a></td>
-                                                <td>929872122</td>
-                                                <td>jose@alvarado.com</td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#cliente/123">Jose Alvarado Santos</a></td>
-                                                <td>929872122</td>
-                                                <td>jose@alvarado.com</td>
-                                            </tr> -->
                                         </tbody>
                                     </table>
-                                     {!! $personas->setPath('')->render() !!}﻿
-                                    <!--div class="row">
-                                        <div class="pull-right">
-                                            <div class="col-xs-12">
-                                                <ul class="pagination">
-                                                    <li><a href="#">&laquo;</a></li>
-                                                    <li><a href="#">1</a></li>
-                                                    <li><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li><a href="#">&raquo;</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div-->
+                                     {!! $personas->setPath('')->appends(Request::only(['name']))->render() !!}﻿
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                {!! Form::open( ['route' => ['Cliente.CtaCliente.destroy', ':PERSONA_ID'], 'method' => 'DELETE', 'id' => 'form-delete']) !!}
+                
+            {!! Form::close() !!}
             </section>
+
+        <script>
+            $(document).ready(function(){
+
+                $('.btn-delete').click(function(e){
+                    e.preventDefault();
+                    var row = $(this).parents('tr');
+                    var id = row.data('id');
+                    var form = $('#form-delete');
+                    var url = form.attr('action').replace(':PERSONA_ID', id); 
+                    var data = form.serialize();
+                    row.fadeOut();
+
+                    $.post(url, data, function(result){
+                        alert(result.message);
+                    }).fail(function(){
+                        alert('El cliente no ha sido eliminado');
+                        row.show();
+                    });
+                });
+            });
+        </script>
+     
     @stop
+
         <!--    </div>
     </body>
 </html>
