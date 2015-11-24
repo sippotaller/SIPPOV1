@@ -1,4 +1,5 @@
-    
+@extends("index")
+@section("NuevoUsuario")    
  <section class="content-header">
     <h1>
         Nuevo Usuario
@@ -124,3 +125,5 @@
           </div>
     </div>
 </div>
+
+@stop

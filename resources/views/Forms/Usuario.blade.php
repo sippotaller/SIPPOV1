@@ -10,6 +10,8 @@
 </head>
 <body> -->
 
+@extends("index")
+@section("Usuario")
     <section class="content-header">
         <h1>
             Usuarios
@@ -38,7 +40,7 @@
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="pull-right">
-                                        <a href="#nuevousuario" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                                        <a href={{route("Usuario.create")}} class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +101,7 @@
             </div>
         </div>
     </section>
-
+@stop
 
         <!-- <div class="row">
             <div class="container-fluid">

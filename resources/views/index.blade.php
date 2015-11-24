@@ -340,8 +340,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href={{route("Cliente.index")}}><i class="fa fa-angle-double-right"></i> Clientes</a></li>
-                                <li><a href="#pedidos"><i class="fa fa-angle-double-right"></i> Pedidos</a></li>
+                                <li><a href={{route("Cliente.CtaCliente.index")}}><i class="fa fa-angle-double-right"></i> Clientes</a></li>
+                                <li><a href="{{ route('Pedido.index') }}"><i class="fa fa-angle-double-right"></i> Pedidos</a></li>
                                 <li><a href="Views/PuntoVenta.html"><i class="fa fa-angle-double-right"></i> Punto de Venta <i class="fa fa-external-link-square"></i></a></li>
                             </ul>
                         </li>
@@ -366,7 +366,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href={{route("CatProducto")}}><i class="fa fa-angle-double-right"></i>Catálogo de Productos</a></li>
-                                <li><a href="#catalogoclientes"><i class="fa fa-angle-double-right"></i>Catálogo de Clientes</a></li>
+                                <li><a href="{{ route('CatCliente.index') }}"><i class="fa fa-angle-double-right"></i>Catálogo de Clientes</a></li>
                             </ul>
                         </li> 
                         <li class="treeview">
@@ -376,8 +376,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#asignarpermisos"><i class="fa fa-angle-double-right"></i> Asignar Permisos</a></li>
-                                <li><a href="#usuarios"><i class="fa fa-angle-double-right"></i> Usuarios</a></li>
+                                <li><a href={{route("AsignarPermisos.index")}}><i class="fa fa-angle-double-right"></i> Asignar Permisos</a></li>
+                                <li><a href={{route("Usuario.index")}}><i class="fa fa-angle-double-right"></i> Usuarios</a></li>
                             </ul>
                         </li> 
                        
@@ -397,10 +397,21 @@
                 @section("NuevoCliente")
                 @show
 
+
+                @section("Usuario")
+                @show
+
+                @section("NuevoUsuario")
+                @show
+
                 @section("Clase")
+                @show
+
+                @section("AsignarPermisos")
                 @show
                 
                 @Section("Segmento")
+
                 @show
 
                 @section('CatProductos')
@@ -409,7 +420,17 @@
                 @section("CreateCatProducto")
                 @show
                
+                @section('EditarCliente')
+                @show
 
+                @section('Pedidos')
+                @show
+
+                @section('DetallePedido')
+                @show
+
+                @section("CatalogoClientes")
+                @show
 
             </aside>
         </div><!-- ./wrapper -->

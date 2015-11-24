@@ -1,3 +1,5 @@
+@extends("index")
+@section("CatalogoClientes")
 <section class="content-header">
 	<h1>
 	Catálogo de Clientes
@@ -41,22 +43,12 @@
 									</tr>
 								</thead>
 								<tbody>
+									@foreach($catalogoCliente as $cliente)
 									<tr>
-										<td>111</td>
-										<td>Cliente Frecuente</td>
+										<td>{{$cliente->codCatCliente}}</td>
+										<td>{{$cliente->descripcion}}</td>
 									</tr>
-									<tr>
-										<td>222</td>
-										<td>Cliente Habitual</td>
-									</tr>
-									<tr>
-										<td>333</td>
-										<td>Cliente Ocasional</td>
-									</tr>
-									<tr>
-										<td>444</td>
-										<td>Empresas</td>
-									</tr>
+									@endforeach
 								</tbody>
 							</table>
 						</div>
@@ -66,4 +58,5 @@
 		</div>
 	</div>
 </section>
+@stop
 
