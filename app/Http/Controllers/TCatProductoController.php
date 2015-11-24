@@ -12,7 +12,7 @@ use DB;
 class TCatProductoController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a Liing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -28,8 +28,11 @@ class TCatProductoController extends Controller
      */
     public function getCreate()
     {   
+        $TipoCuantia=DB::table("TTipoCuantia")->get();
         $Segmentos=DB::table("TSegmento")->get();
-        return view("Forms/Productos/CreateCatProducto",["Segmento"=>$Segmentos]);
+        $UnidadMedida=DB::table("TUnidadMedida")->get();
+        $Marca=DB::table("TMarca")->get();
+        return view("Forms/Productos/CreateCatProducto",["Segmento"=>$Segmentos,"Cuantia"=>$TipoCuantia,"UnidadMedida"=>$UnidadMedida,"Marca"=>$Marca]);
     }
 
     /**
@@ -40,7 +43,7 @@ class TCatProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "Hola";
     }
 
     /**
@@ -87,20 +90,33 @@ class TCatProductoController extends Controller
     {
         //
     }
-    public function getFamilia($codSegmento){
+    public function getListFamilia($codSegmento){
         return DB::table("TFamilia")->where("codSegmento","=",$codSegmento)->get();
     }
-    public function getClase($codClase){
-        return DB::table("TClase")->where("codFamilia","=",$codClase)->get();
+    public function getListClase($codFamilia){
+        return DB::table("TClase")->where("codFamilia","=",$codFamilia)->get();
     }
-    public function getTipoProducto($codClase){
+    public function getListTipoProducto($codClase){
         return DB::table("TTipoProducto")->where("codClase","=",$codClase)->get();
     }
-    public function getUnidadMedida($codUM){
-        return DB::table("TUnidadMedida")->where("codUM",'=',$codUM)->get();
+    public function getListCuantia($codTipoCuantia,$codUnidadMedida){
+        return DB::table("TCuantia")->where("codTipoCuantia","=",$codTipoCuantia)->where("codUM","=",$codUnidadMedida)->get();
+    }
+    public function getKeyTipoProducto($keyTipoProducto){
+        return DB::table("TTipoProducto")->where("desc","like","%".$keyTipoProducto."%")->take(20)->get();
+    }
+    public function getTipoProducto($codTipoProducto){
+        return DB::table("TTipoProducto")->where("codTipoProducto","=",$codTipoProducto)->get(["desc"]);
+    }
+    public function getMarca($codMarca){
+        return DB::table("TMarca")->where("codMarca","=",$codMarca)->get(["desc"]);
     }
     public function getTipoCuantia($codTipoCuantia){
-        return DB::table("TTipoCuantia")->where("codTipoCuantia","=",$codTipoCuantia)->get();
+        return DB::table("TTipoCuantia")->where("codTipoCuantia","=",$codTipoCuantia)->get(["desc"]);
     }
+    public function getUnidadMedida($codUnidadMedida){
+        return DB::table("TUnidadMedida")->where("codUM","=",$codUnidadMedida)->get(["desc"]);
+    }
+    
 
 }

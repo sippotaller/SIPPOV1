@@ -1,6 +1,22 @@
 @extends("index")
 
 @section("CreateCatProducto")
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+{!!HTML::script("js/Producto/CreateProducto.js")!!}
+<style type="text/css">
+		#Productos{
+				-webkit-overflow-y: scroll;
+				overflow-y: scroll;
+				-webkit-width: 100%;
+				width: 100%;
+				height: 200px;
+				-webkit-position: relative;
+				position: relative;
+			}
+</style>
+
 <section class="content-header">
 	<h1>
 	Catálogo de Productos
@@ -29,7 +45,7 @@
 							<div class="form-horizontal" role="form">
 								<div class="form-group">
 									<div class="col-sm-12">
-										<input type="text" name="" id="input" class="form-control" placeholder="Buscar...">
+										<input type="text"  id="search" class="form-control" placeholder="Buscar...">
 									</div>
 								</div>
 								<div class="form-group">
@@ -68,10 +84,22 @@
 										</select>
 									</div>
 								</div>
-								
+								<div class="table-responsive">
+									<table class="table table-hover">
+										<thead>
+											<tr>
+												<th>Códico</th>
+												<th>Desc</th>
+											</tr>
+										</thead>
+										<tbody id="ListProductos">
+											
+										</tbody>
+									</table>
+								</div>
 								<div class="form-group">
 									<label for="input-id" class="col-sm-3 control-label"> Código :</label>
-									<label for="input-id" class="col-sm-2 control-label">60121104
+									<label for="input-id" class="col-sm-2 control-label"><span id="codTipoProducto"></span>
 									</label>
 								</div>
 							</div>
@@ -90,11 +118,11 @@
 								<div class="form-group">
 									<label for="input" class="col-xs-3 control-label">Marca:</label>
 									<div class="col-xs-5">
-										<select name="" id="input" class="form-control">
+										<select id="Marca" class="form-control">
 											<option value="">-- Select One --</option>
-											<option value="">CHAMEX</option>
-											<option value="">HOJAX</option>
-											<option value="">XEROX</option>
+											@foreach($Marca as $m)
+												<option value={{$m->codMarca}}>{{$m->desc}}</option>
+											@endforeach
 										</select>
 									</div>
 									<div class="col-xs-4">
@@ -116,11 +144,11 @@
 								<div class="form-group">
 									<label for="input" class="col-xs-3 control-label">Tipo:</label>
 									<div class="col-xs-5">
-										<select name="" id="input" class="form-control">
+										<select  id="TipoCuantia" class="form-control">
 											<option value="">-- Select One --</option>
-											<option value="">Menor</option>
-											<option value="">Mayor</option>
-											<option value="">Empresas</option>
+											@foreach($Cuantia as $c)
+												<option value={{$c->codTipoCuantia}}>{{$c->desc}}</option>
+											@endforeach
 										</select>
 									</div>
 									<div class="col-xs-4">
@@ -130,13 +158,11 @@
 								<div class="form-group">
 									<label for="input" class="col-xs-3 control-label">Unidades:</label>
 									<div class="col-xs-5">
-										<select name="" id="input" class="form-control">
-											<option value="">-- Select One --</option>
-											<option value="">UNID</option>
-											<<option value=""></option> value="">CTO</option>
-											<option value="">MILL</option>
-											<option value="">1/2MILL</option>
-											<option value="">MILL</option>
+										<select  id="UnidadMedida" class="form-control">
+											<option value="">-- Select One --</option>	
+											@foreach($UnidadMedida as $um)
+												<option value={{$um->codUM}}>{{$um->desc}}</option>
+											@endforeach
 										</select>
 									</div>
 									<div class="col-xs-4">
@@ -152,27 +178,16 @@
 													<th>id</th>
 													<th>Mín</th>
 													<th>Máx</th>
-													<th>Seleccionar</th>
+													<th>Seleccionar
+														<div class="pull-right">
+														<button type="button" class="btn btn-success" data-toggle="modal" href='#NuevaCuantia'>
+															<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+														</button>
+														</div>
+													</th>
 												</tr>
 											</thead>
-											<tbody>
-
-												<tr>
-													<td>1</td>
-													<td>1</td>
-													<td>10</td>
-													<td>
-														<input type="checkbox" value="">	
-													</td>
-												</tr>
-												<tr>
-													<td>2</td>
-													<td>3</td>
-													<td>6</td>
-													<td>
-														<input type="checkbox" value="">	
-													</td>
-												</tr>
+											<tbody id="Cuantia">
 											</tbody>
 										</table>
 									<!-- <label for="number" class="col-xs-3 control-label">Min:</label>
@@ -203,28 +218,28 @@
 					<div class="form-horizontal" role="form">
 						<div class="form-group">
 							<label class="control-label col-sm-5">Tipo de Producto: </label>
-							<label class="col-sm-5">Hojas bond</label>
+							<label id="Res_TipoProducto"class="col-sm-5"></label>
 						</div>
 						<div class="form-group">
+							<label class="control-label col-sm-5">Marca: </label>
+							<label id="Res_Marca"class="col-sm-5"></label>
+						</div>
+						
+						<div class="form-group">
 							<label class="control-label col-sm-5">Unidad de Medida: </label>
-							<label class="col-sm-5">MILL</label>
+							<label id="Res_UM"class="col-sm-5"></label>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-5">Cuantía:</label>
-							<label class="col-sm-5">Menor</label>
+							<label id="Res_Cuantia" class="col-sm-5"></label>
 						</div>
 						<div class="form-group">
-							<label for="input" class="control-label col-sm-5">Descripción Corta:</label>
+							<label for="input" class="control-label col-sm-5">Descripción :</label>
 							<div class="col-sm-5">
-								<input type="text" class="form-control">
+								<input id="Res_Decripcion"type="text" class="form-control">
 							</div>
 						</div>
-						<div class="form-group">
-							<label for="input"  class="control-label col-sm-5">Descripción Larga:</label>
-							<div class="col-sm-5">
-								<textarea name="" id="input" class="form-control" rows="3" required="required"></textarea>
-							</div>
-						</div>
+						
 						<div class="form-group">
 							<button class="btn-success col-xs-offset-10">Crear</button>
 						</div>
@@ -235,5 +250,59 @@
 	</div>
 </section>
 
-{!!HTML::script("js/Producto/CreateProducto.js")!!}
+
+
+<!-- Nueva Cuantia -->
+<div class="modal fade" id="NuevaCuantia">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Nueva Cuantía</h4>
+				<label id="status"></label>
+			</div>
+			<div class="modal-body">
+				<form role="form">		
+				 	<input type="hidden" id="_token" value="<?php echo csrf_token(); ?>">
+					<div class="form-group">
+						<label for="">Tipo de Cuantía</label>
+						<label id="errorTipoCuantia"></label>
+						<select  id="CuantiaTipoCuantia" class="form-control">
+							<option value="">-- Select One --</option>
+							@foreach($Cuantia as $c)
+								<option value={{$c->codTipoCuantia}}>{{$c->desc}}</option>
+							@endforeach
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="">Unidad de Medido</label>
+						<label id="errorUM"></label>
+						<select  id="CuantiaUM" class="form-control">
+							<option value="">-- Select One --</option>
+							@foreach($UnidadMedida as $um)
+								<option value={{$um->codUM}}>{{$um->desc}}</option>
+							@endforeach
+						</select>
+					</div>
+					<div class="form-group">
+						<label>Mínimo</label>
+						<label id="errorMinimo"></label>
+						<input type="number" id="CuantiaMinimo" class="form-control" value="" min="1">
+					</div>
+					<div class="form-group">
+						<label>Máximo</label>
+						<label id="errorMaximo"></label>
+						<input type="number" id="CuantiaMaximo" class="form-control" value="" min="1">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				<button type="button" class="btn btn-primary" id="btnNuevoProducto">Guardar</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 @stop

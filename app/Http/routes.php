@@ -23,11 +23,12 @@ $router->resource('Clase', 'TClaseController');
 $router->resource('TipoProducto', 'TTipoProductoController');
 $router->controller('CatProducto', 'TCatProductoController',
 	["getIndex"=>"CatProducto"
-	,"getCreate"=>"CatProducto.create"
-	,"getFamilia"=>"CatProducto.familia"
-	,"getClase"=>"CatProducto.clase"
-	,"getTipoProducto"=>"CatProducto.tipoproducto"
-	,"getUnidadMedida"=>"CatProducto.unidadmedida"]);
-
+	,"getCreate"=>"CatProducto.create"]);
+$router->resource('Cuantia', 'TCuantiaController');
 $router->resource('Cliente', 'CtaClienteController');
 $router->resource('Cliente/CtaCliente', 'TCtaClienteController');
+
+
+
+
+

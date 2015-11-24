@@ -420,9 +420,10 @@
         
 
         <!-- jQuery 2.0.2 -->
+        
         {!!HTML::script("js/jquery.min.js")!!}
         {!!HTML::script("js/jquery-ui-1.10.3.min.js")!!}
-        {!!HTML::script("js/Producto/CreateProducto.js")!!}
+        
         {!!HTML::script("js/bootstrap.min.js")!!}
         {!!HTML::script("js/Angularjs/lib/underscore-min.js")!!}
         {!!HTML::script("js/Angularjs/lib/angular.min.js")!!}
