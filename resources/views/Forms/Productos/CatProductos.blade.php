@@ -39,6 +39,7 @@
 								<th>Cod.</th>
 								<th>Tipo de Producto.</th>
 								<th>Marca</th>
+								<th>Descripción</th>
 								<th>Cuantía</th>
 								<th>Unid.</th>
 								<th>P.V.</th>
@@ -49,6 +50,7 @@
 							<tr>
 								<td>{{$c->codProducto}}</td>
 								<td>{{$c->tipoProducto}}</td>
+								<td>{{$c->marca}}</td>
 								<td>{{$c->descProducto}}</td>
 								<td>{{$c->cuantia}}</td>
 								<td>{{$c->unidad}}</td>

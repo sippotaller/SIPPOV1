@@ -210,36 +210,51 @@
 			<div class="panel panel-primary"style="width:100%;">
 				<div class="panel-heading">
 					<h3 class="panel-title">Resumen</h3>
+					<label id="statusProducto"></label>
 				</div>
 				<div class="panel-body">
+					<input type="hidden"  id="_token" class="form-control" value="<?php echo csrf_token(); ?>">
+					<input type="hidden" id="urlProductoStore" value={{route("CatProducto.store")}}>
 					<div class="form-horizontal" role="form">
 						<div class="form-group">
 							<label class="control-label col-sm-5">Tipo de Producto: </label>
 							<label id="Res_TipoProducto"class="col-sm-5"></label>
+							<label id="errorProductoTipoProducto"class="col-sm-5"></label>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-5">Marca: </label>
 							<label id="Res_Marca"class="col-sm-5"></label>
+							<label id="errorProductoMarca"class="col-sm-5"></label>
 						</div>
 						
 						<div class="form-group">
 							<label class="control-label col-sm-5">Unidad de Medida: </label>
 							<label id="Res_UM"class="col-sm-5"></label>
+							<label id="errorProductoUM"class="col-sm-5"></label>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-5">Cuantía:</label>
 							<label id="Res_Cuantia" class="col-sm-5"></label>
-							
+							<label id="errorProductoCuantia" class="col-sm-5"></label>
 						</div>
 						<div class="form-group">
 							<label for="input" class="control-label col-sm-5">Descripción :</label>
 							<div class="col-sm-5">
-								<input id="Res_Decripcion"type="text" class="form-control">
+								<input id="Res_Descripcion"type="text" class="form-control">
 							</div>
+							<label id="errorProductoDescripcion" class="col-sm-5"></label>
 						</div>
-						
+
 						<div class="form-group">
-							<button class="btn-success col-xs-offset-10">Crear</button>
+							<label for="input" class="control-label col-sm-5">Precio :</label>
+							<div class="col-sm-5">
+								<input id="Res_Precio"type="number" class="form-control">
+							</div>
+							<label id="errorProductoPrecio" class="col-sm-5"></label>
+						</div>
+
+						<div class="form-group">
+							<button class="btn-success col-xs-offset-10" id="btnNuevoProducto">Crear</button>
 						</div>
 					</div>
 				</div>
@@ -297,7 +312,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-				<button type="button" class="btn btn-primary" id="btnNuevoProducto">Guardar</button>
+				<button type="button" class="btn btn-primary" id="btnNuevoCuantia">Guardar</button>
 			</div>
 		</div>
 	</div>

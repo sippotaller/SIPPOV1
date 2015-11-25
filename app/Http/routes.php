@@ -23,7 +23,9 @@ $router->resource('Clase', 'TClaseController');
 $router->resource('TipoProducto', 'TTipoProductoController');
 $router->controller('CatProducto', 'TCatProductoController',
 					["getIndex"=>"CatProducto"
-					,"getCreate"=>"CatProducto.create"]);
+					,"getCreate"=>"CatProducto.create"
+					,"postStore"=>"CatProducto.store"]);
+
 $router->resource('Cuantia', 'TCuantiaController');
 $router->resource('Cliente', 'CtaClienteController');
 $router->resource('Cliente/CtaCliente', 'TCtaClienteController');

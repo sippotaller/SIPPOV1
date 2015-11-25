@@ -363,7 +363,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href={{route("CatProducto")}}><i class="fa fa-angle-double-right"></i>Catálogo de Productos</a></li>
-                                <li><a href="{{ route('CatCliente.index') }}"><i class="fa fa-angle-double-right"></i>Catálogo de Clientes</a></li>
+                                <li><a href={{ route('CatCliente.index') }}><i class="fa fa-angle-double-right"></i>Catálogo de Clientes</a></li>
                             </ul>
                         </li> 
                         <li class="treeview">

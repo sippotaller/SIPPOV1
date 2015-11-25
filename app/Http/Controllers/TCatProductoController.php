@@ -9,6 +9,8 @@ use App\model\TSegmento;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
+use App\model\TCatProducto;
+use Validator;
 class TCatProductoController extends Controller
 {
     /**
@@ -41,9 +43,23 @@ class TCatProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function postStore(Request $request)
     {
-        return "Hola";
+        $v=Validator::make($request->all(),[
+            "desc"=>"required"
+            ,"prec"=>"required"
+            ,"codTipoProducto"=>"required"
+            ,"codCuantia"=>"required"
+            ,"codMarca"=>"required"
+            ]);
+
+        if(!$v->fails()){
+            $id=TCatProducto::create($request->all());
+            return array("status"=>"Exito","object"=>$id);
+        }else{
+            return array("status"=>"Error","messages"=>$v->errors());
+        }
+        
     }
 
     /**

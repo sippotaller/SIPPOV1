@@ -37,17 +37,7 @@ class TCuantiaController extends Controller
      */
     public function store(Request $request)
     {
-        // $Cuantia=new TCuantia;
-        // $Cuantia->min=$request->get("min");
-        // $Cuantia->max=$request->get("max");
-        // $Cuantia->codTipoCuantia=$request->get("codTipoCuantia");
-        // $Cuantia->codUM=$request->get("codUM");
-        // $Cuantia->save();
-        // return $Cuantia->id;
-        // $cuantia=["min"=>$request->get("min")
-        //                 ,"max"=>$request->get("max")
-        //                 ,"codTipoCuantia"=>$request->get("codTipoCuantia")
-        //                 ,"codUM"=>$request->get("codUM")];
+        
         $v=Validator::make($request->all(),[
             'min'=>'required|min:1',
             'max'=>'required|min:1',

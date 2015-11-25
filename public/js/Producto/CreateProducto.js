@@ -3,7 +3,9 @@ $(document).ready(function() {
 	items=[];
 	items_ant=[];
 	url="http://"+window.location.host+"/SIPPO/public/CatProducto/";	
-
+	var codCuantia;
+	var codMarca;
+	var codTipoProducto;
 	$("#Segmento").on('click', function() {
 		codSegmento=$(this).val();
 		$("#Familia option").remove();
@@ -46,13 +48,12 @@ $(document).ready(function() {
 		});
 	});
 
-	
 	$("#ListProductos tbody").on("click","tr",function(event) {
 		$(this).find('td').each(function(index) {
 			if(index==0) {
-				codProducto=$(this).text();
-				$("#codTipoProducto").text(codProducto);
-				$.get(url+'tipo-producto/'+codProducto, function(data) {
+				codTipoProducto=$(this).text();
+				$("#codTipoProducto").text(codTipoProducto);
+				$.get(url+'tipo-producto/'+codTipoProducto, function(data) {
 					data.forEach(function(i){
 						$("#Res_TipoProducto").text(i["desc"]);
 					});
@@ -103,16 +104,18 @@ $(document).ready(function() {
 		if(TC!="" && UM!=""){
 			$.get(url+'list-cuantia/'+TC+"/"+UM, function(data) {
 				data.forEach(function(i){
-					$("#Cuantia").append("<tr style='cursor:pointer'><td>"+i["codCuantia"]+"</td><td>"+i["max"]+"</td><td>"+i["min"]+"</td></tr>");
+					$("#Cuantia").append("<tr style='cursor:pointer'><td>"+i["codCuantia"]+"</td><td>"+i["min"]+"</td><td>"+i["max"]+"</td></tr>");
 				});
 			});
 		}
 	}
+
 	$("#Cuantia").on('click', 'tr', function(event) {
+		codCuantia=$(this).find('td').eq(0).html();
 		$("#Res_Cuantia").text(($("#Res_Cuantia").text()+" (Min : "+$(this).find('td').eq(1).html()+", Max : "+$(this).find('td').eq(2).html()+")"));
 	});
 
-
+	
 	$("#Marca").on("change",function(){
 		codMarca=$(this).val();
 		$.get(url+'marca/'+codMarca, function(data) {
@@ -123,7 +126,7 @@ $(document).ready(function() {
 	});
 
 	// urlCuantia="http://"+window.location.host+"/SIPPO/public/Cuantia";
-	$("#btnNuevoProducto").on('click', function() {
+	$("#btnNuevoCuantia").on('click', function() {
 		urlCuantia=$("#urlCuantiaStore").val();
 		Minimo=$("#CuantiaMinimo").val();
 		Maximo=$("#CuantiaMaximo").val();
@@ -173,4 +176,36 @@ $(document).ready(function() {
 		
 	});
 
+	$("#btnNuevoProducto").on('click', function(event) {
+		urlProducto=$("#urlProductoStore").val();
+		token=$("#_token").val();
+		Desc=$("#Res_Descripcion").val();
+		Prec=$("#Res_Precio").val();
+		$("#errorProductoTipoProducto").text("");
+		$("#errorProductoMarca").text("");
+		$("#errorProductoCuantia").text("");
+		$("#errorProductoUM").text("");
+		$("#errorProductoDescripcion").text("");
+		$("#errorProductoPrecio").text("");
+		$.post(urlProducto, 
+			{desc: Desc
+			,prec:Prec
+			,codTipoProducto:codTipoProducto
+			,codCuantia:codCuantia
+			,codMarca:codMarca
+			,_token:token}, 
+			function(data, textStatus, xhr) {
+				$("#statusProducto").text(data["status"]);
+				console.log(data);
+				if(data["status"]=="Error"){
+					$("#errorProductoTipoProducto").text(data["messages"]["codTipoProducto"]);
+					$("#errorProductoMarca").text(data["messages"]["codMarca"]);
+					$("#errorProductoCuantia").text(data["messages"]["codCuantia"]);
+					$("#errorProductoUM").text(data["messages"]["codUM"]);
+					$("#errorProductoDescripcion").text(data["messages"]["desc"]);
+					$("#errorProductoPrecio").text(data["messages"]["prec"]);
+				}
+		});
+		
+	});
 });
