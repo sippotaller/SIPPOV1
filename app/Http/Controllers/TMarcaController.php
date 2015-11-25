@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\model\TMarca;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Validator;
+
 
 class TMarcaController extends Controller
 {
@@ -37,7 +39,16 @@ class TMarcaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $v=Validator::make($request->all(),[
+            'desc'=>'required'
+            ]);
+        if(!$v->fails()){
+            $id=TMarca::create($request->all());
+            return array("status"=>"Exito","object"=>$id);
+        }else{
+            return array("status"=>"Error","messages"=>$v->errors());
+        }
+        
     }
 
     /**
@@ -48,7 +59,7 @@ class TMarcaController extends Controller
      */
     public function show($id)
     {
-        //
+        return TMarca::find($id);
     }
 
     /**

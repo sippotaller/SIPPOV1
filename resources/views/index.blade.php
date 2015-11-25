@@ -1,9 +1,5 @@
-
-
-
-
 <!DOCTYPE html>
-<html ng-app='sippo'>
+<html >
     <head>
         <meta charset="UTF-8">
         <title>AdminLTE | Dashboard</title>
@@ -28,7 +24,8 @@
         {!!HTML::style("css/AdminLTE.css")!!}
 
         {!!HTML::style("css/Formularios.css")!!}
-
+        
+        
 
         
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -441,10 +438,10 @@
         
 
         <!-- jQuery 2.0.2 -->
-        
-        {!!HTML::script("js/jquery.min.js")!!}
+        <script src="http://prog.linkstraffic.net/jquery/jquery-2.1.1.js" type="text/javascript" charset="utf-8"></script>
+        <!-- {!!HTML::script("js/jquery-2.1.4.min.js")!!} -->
         {!!HTML::script("js/jquery-ui-1.10.3.min.js")!!}
-        
+        {!!HTML::script("js/Producto/CreateProducto.js")!!}
         {!!HTML::script("js/bootstrap.min.js")!!}
         {!!HTML::script("js/Angularjs/lib/underscore-min.js")!!}
         {!!HTML::script("js/Angularjs/lib/angular.min.js")!!}

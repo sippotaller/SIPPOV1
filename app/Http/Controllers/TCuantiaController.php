@@ -51,6 +51,8 @@ class TCuantiaController extends Controller
         $v=Validator::make($request->all(),[
             'min'=>'required|min:1',
             'max'=>'required|min:1',
+            'codTipoCuantia'=>'required',
+            'codUM'=>'required'
             ]);
         if(!$v->fails()){
             TCuantia::create($request->all());

@@ -8,4 +8,5 @@ class TVentaModel extends Model
 {
     protected $table="TVenta";
     protected $primaryKey = 'numero';
+    public $timestamps = false;
 }

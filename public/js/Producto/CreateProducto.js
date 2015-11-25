@@ -1,7 +1,9 @@
+
 $(document).ready(function() {
 	items=[];
 	items_ant=[];
-	url="http://"+window.location.host+"/SIPPO/public/CatProducto/";
+	url="http://"+window.location.host+"/SIPPO/public/CatProducto/";	
+
 	$("#Segmento").on('click', function() {
 		codSegmento=$(this).val();
 		$("#Familia option").remove();
@@ -24,22 +26,16 @@ $(document).ready(function() {
 	$("#Clase").on('click', function() {
 		codClase=$(this).val();
 		$("#Producto option").remove();
-		$("#ListProductos tr").remove();
+		$("#ListProductos tbody tr").remove();
 		$.get(url+"list-tipo-producto/"+codClase, function(data) {	
 			data.forEach(function(i){
 				$("#Producto").append('<option value="'+i["codTipoProducto"]+'"">'+i["desc"]+'</option>');
-				$("#ListProductos").append("<tr><td ><input class='radioTipoProducto' type='radio' value='"+i["codTipoProducto"]+"' name='radioTipoProducto'>"+i["codTipoProducto"]+"</td><td>"+i["desc"]+"</td></tr>");
+				$("#ListProductos tbody").append("<tr  style='cursor:pointer' ><td>"+i["codTipoProducto"]+"</td><td>"+i["desc"]+"</td></tr>");
 			});
 		});	
 	});
 	
-	$(".radioTipoProducto").on('click',  function() {
-		codProducto=$(this).val();
-		console.log(codProducto);
-
-		$("#codTipoProducto").text(codProducto);
-	});
-
+	
 	$("#Producto").on('click', function() {
 		codProducto=$(this).val();
 		$("#codTipoProducto").text(codProducto);
@@ -49,47 +45,73 @@ $(document).ready(function() {
 			});
 		});
 	});
+
+	
+	$("#ListProductos tbody").on("click","tr",function(event) {
+		$(this).find('td').each(function(index) {
+			if(index==0) {
+				codProducto=$(this).text();
+				$("#codTipoProducto").text(codProducto);
+				$.get(url+'tipo-producto/'+codProducto, function(data) {
+					data.forEach(function(i){
+						$("#Res_TipoProducto").text(i["desc"]);
+					});
+				});
+			}
+		});
+	});
+
 	$("#search").on("keyup", function(){
 		keyword=$(this).val();
-		$("#ListProductos tr").remove();
+		$("#ListProductos tbody tr").remove();
 		$.get(url+'key-tipo-producto/'+keyword, function(data) {
 			data.forEach(function(i){
-				$("#ListProductos").append("<tr><td ><input class='radioTipoProducto' type='radio' value='"+i["codTipoProducto"]+"' name='radioTipoProducto'>"+i["codTipoProducto"]+"</td><td>"+i["desc"]+"</td></tr>");
-				
+				$("#ListProductos tbody").append("<tr style='cursor:pointer' ><td>"+i["codTipoProducto"]+"</td><td>"+i["desc"]+"</td></tr>");
 			});
 		});	
 	});
+	
+
 	$('#UnidadMedida').on('click', function() {
 		if($(this).val()!=""){
 			ListCuantia();	
-		}
-		$.get(url+'unidad-medida/'+$(this).val(), function(data) {
-			data.forEach(function(i){
-				$("#Res_UM").text(i["desc"]);
+			$.get(url+'unidad-medida/'+$(this).val(), function(data) {
+				data.forEach(function(i){
+					$("#Res_UM").text(i["desc"]);
+				});
 			});
-		});
+		}
+		
 	});
 	$('#TipoCuantia').on('click', function() {
 		if($(this).val()!=""){
 			ListCuantia();	
-		}
-		$.get(url+'tipo-cuantia/'+$(this).val(), function(data) {
-			data.forEach(function(i){
-				$("#Res_Cuantia").text(i["desc"]);
+			$.get(url+'tipo-cuantia/'+$(this).val(), function(data) {
+				data.forEach(function(i){
+					$("#Res_Cuantia").text(i["desc"]);
+				});
 			});
-		});
+		}
+		
 	});
 
 	function ListCuantia(){
 		UM=$('#UnidadMedida').val();
 		TC=$('#TipoCuantia').val();
 		$("#Cuantia tr").remove();
-		$.get(url+'list-cuantia/'+TC+"/"+UM, function(data) {
-			data.forEach(function(i){
-				$("#Cuantia").append("<tr><td>"+i["codCuantia"]+"</td><td>"+i["max"]+"</td><td>"+i["min"]+"</td><td><input type='radio' id='radioCuantia' name='radioCuantia' value='"+i["codCuantia"]+"'></td></tr>");
+
+		if(TC!="" && UM!=""){
+			$.get(url+'list-cuantia/'+TC+"/"+UM, function(data) {
+				data.forEach(function(i){
+					$("#Cuantia").append("<tr style='cursor:pointer'><td>"+i["codCuantia"]+"</td><td>"+i["max"]+"</td><td>"+i["min"]+"</td></tr>");
+				});
 			});
-		});
+		}
 	}
+	$("#Cuantia").on('click', 'tr', function(event) {
+		$("#Res_Cuantia").text(($("#Res_Cuantia").text()+" (Min : "+$(this).find('td').eq(1).html()+", Max : "+$(this).find('td').eq(2).html()+")"));
+	});
+
 
 	$("#Marca").on("change",function(){
 		codMarca=$(this).val();
@@ -100,8 +122,9 @@ $(document).ready(function() {
 		});
 	});
 
-	urlCuantia="http://"+window.location.host+"/SIPPO/public/Cuantia";
+	// urlCuantia="http://"+window.location.host+"/SIPPO/public/Cuantia";
 	$("#btnNuevoProducto").on('click', function() {
+		urlCuantia=$("#urlCuantiaStore").val();
 		Minimo=$("#CuantiaMinimo").val();
 		Maximo=$("#CuantiaMaximo").val();
 		codTipoCuantia=$("#CuantiaTipoCuantia").val();
@@ -111,8 +134,8 @@ $(document).ready(function() {
 		$("#errorMaximo").text("");
 		$("#errorUM").text("");
 		$("#errorTipoCuantia").text("");
-		$("#status").text("");
-		jQuery.post('http://localhost:8000/SIPPO/public/Cuantia', 
+		$("#statusCuantia").text("");
+		jQuery.post(urlCuantia, 
 			{min:Minimo
 			,max:Maximo
 			,codTipoCuantia:codTipoCuantia
@@ -120,7 +143,7 @@ $(document).ready(function() {
 			,_token:Token}, 
 			function(data) {
 		  		console.log(data);
-		  		$("#status").text(data["status"]);
+		  		$("#statusCuantia").text(data["status"]);
 		  		if(data["status"]=="Error"){	
 		  			$("#errorMinimo").text(data["messages"]["min"]);
 		  			$("#errorMaximo").text(data["messages"]["max"]);
@@ -129,6 +152,25 @@ $(document).ready(function() {
 		  		}
 			});
 
+	});
+
+	
+	$("#btnNuevaMarca").on('click',  function() {
+		urlMarca=$("#urlMarcaStore").val();
+		desc=$("#MarcaDesc").val();
+		token=$("#_token").val();
+		$("#statusMarca").text("");
+		$("#errorMarca").text("");
+		jQuery.post(urlMarca, {desc: desc,_token:token}, function(data) {
+			console.log(data);
+			$("#statusMarca").text(data["status"]);
+		  	if(data["status"]=="Error"){
+		  		$("#errorMarca").text(data["messages"]["desc"]);
+		  	}else{
+		  		$("#Marca").append("<option value='"+data["object"]["codMarca"]+"'>"+data["object"]["desc"]+"</option>")
+		  	}
+		});
+		
 	});
 
 });

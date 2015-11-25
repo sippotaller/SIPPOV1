@@ -27,7 +27,7 @@ $router->controller('CatProducto', 'TCatProductoController',
 $router->resource('Cuantia', 'TCuantiaController');
 $router->resource('Cliente', 'CtaClienteController');
 $router->resource('Cliente/CtaCliente', 'TCtaClienteController');
-
+$router->resource('Marca', 'TMarcaController');
 
 
 

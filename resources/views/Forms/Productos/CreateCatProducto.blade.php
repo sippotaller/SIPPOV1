@@ -1,10 +1,8 @@
 @extends("index")
 
 @section("CreateCatProducto")
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-{!!HTML::script("js/Producto/CreateProducto.js")!!}
+
+
 <style type="text/css">
 		#Productos{
 				-webkit-overflow-y: scroll;
@@ -85,15 +83,15 @@
 									</div>
 								</div>
 								<div class="table-responsive">
-									<table class="table table-hover">
+									<table id="ListProductos" class="table table-hover">
 										<thead>
 											<tr>
-												<th>Códico</th>
+												<th>Código</th>
 												<th>Desc</th>
 											</tr>
 										</thead>
-										<tbody id="ListProductos">
-											
+										<tbody>
+
 										</tbody>
 									</table>
 								</div>
@@ -126,7 +124,7 @@
 										</select>
 									</div>
 									<div class="col-xs-4">
-										<button type="button" class="form-control btn btn-primary">Nuevo</button>
+										<button type="button" class="form-control btn btn-primary" data-toggle="modal" href="#nuevaMarca">Nuevo</button>
 									</div>
 								</div>
 							</div>
@@ -137,7 +135,13 @@
 				<div class="col-xs-12 col-sm-6">
 					<div class="panel panel-primary" style="width:100%;">
 						<div class="panel-heading">
-							<h3 class="panel-title">Cuantía</h3>
+							<h3 class="panel-title">Cuantía
+									<div class="pull-right">
+								<button type="button" class="btn btn-success" data-toggle="modal" href='#NuevaCuantia'>
+									<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+								</button>
+							</div>
+							</h3>
 						</div>
 						<div class="panel-body">
 							<div class="form-horizontal" role="form">
@@ -178,13 +182,6 @@
 													<th>id</th>
 													<th>Mín</th>
 													<th>Máx</th>
-													<th>Seleccionar
-														<div class="pull-right">
-														<button type="button" class="btn btn-success" data-toggle="modal" href='#NuevaCuantia'>
-															<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-														</button>
-														</div>
-													</th>
 												</tr>
 											</thead>
 											<tbody id="Cuantia">
@@ -232,6 +229,7 @@
 						<div class="form-group">
 							<label class="control-label col-sm-5">Cuantía:</label>
 							<label id="Res_Cuantia" class="col-sm-5"></label>
+							
 						</div>
 						<div class="form-group">
 							<label for="input" class="control-label col-sm-5">Descripción :</label>
@@ -259,11 +257,12 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				<h4 class="modal-title">Nueva Cuantía</h4>
-				<label id="status"></label>
+				<label id="statusCuantia"></label>
 			</div>
 			<div class="modal-body">
 				<form role="form">		
 				 	<input type="hidden" id="_token" value="<?php echo csrf_token(); ?>">
+				 	<input type="hidden" id="urlCuantiaStore" id="input" class="form-control" value={{route("Cuantia.store")}}>
 					<div class="form-group">
 						<label for="">Tipo de Cuantía</label>
 						<label id="errorTipoCuantia"></label>
@@ -304,5 +303,33 @@
 	</div>
 </div>
 
+<!-- Nueva MArca -->
+
+<div class="modal fade" id="nuevaMarca">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Nueva Marca</h4>
+				<label id="statusMarca"></label>
+			</div>
+			<div class="modal-body">
+				<form  role="form">
+					<input type="hidden" id="_token" value="?php echo csrf_token(); ?">
+					<input type="hidden" id="urlMarcaStore" value={{route("Marca.store")}}>
+					<div class="form-group">
+						<label for="">Marca</label>
+						<label id="errorMarca"></label>
+						<input type="text" class="form-control" id="MarcaDesc" placeholder="">
+					</div>				
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				<button type="button" class="btn btn-primary" id="btnNuevaMarca">Guardar</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 @stop
