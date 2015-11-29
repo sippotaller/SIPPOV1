@@ -86,7 +86,6 @@
                                 </div>
                                 <div class="form-group pad" >
                                     <div class="col-md-4 pad">
-                                        <label for="calle" class="control-label">Calle</label>
                                         {!! Form::label('calle','Calle', ['class' => 'control-label']) !!}
                                      </div>
                                      <div class="col-xs-12 col-md-8 pad">

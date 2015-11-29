@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
-use App\model\Usuario;
+use App\model\TUsuario;
 use App\Http\Requests\Request;
 
 class CreateUsersRequest extends Request
@@ -33,7 +33,7 @@ class CreateUsersRequest extends Request
             'codPostal' => 'required',
             'telefono' => 'required|digits_between:5,10',   
             'correo' => 'required|email',
-            'pass' => 'required'
+            'pass' => 'required|min:5'
         ];
     }
 }

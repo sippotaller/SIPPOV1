@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Hash;
 use Illuminate\Http\Request;
-use App\model\Usuario;
+use App\model\TUsuario;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateUsersRequest;
@@ -38,21 +38,30 @@ class UsersController extends Controller
      */
     public function store(CreateUsersRequest $request)
     {   
-        dd($request);
-        $codUsuarioAnterior = \DB::table('Usuario')->max('codUsuario');
+       // dd($request);
+        $codUsuarioAnterior = \DB::table('tUsuario')->max('codUsuario');
+        if ($codUsuarioAnterior!='') {
+            $nuevoCodUsuario=$codUsuarioAnterior+1;
+        } else {
+            $nuevoCodUsuario=1;
+        }
+        
         $nuevoCodUsuario=$codUsuarioAnterior+1;
-        $nuevoUsuario= new Usuario();
+        $nuevoUsuario= new TUsuario();
         $nuevoUsuario->codUsuario=$nuevoCodUsuario;//
         $nuevoUsuario->Nombre=$request->nombre;
         $nuevoUsuario->Telefono=$request->telefono;
         $nuevoUsuario->Pais=$request->pais;
         $nuevoUsuario->Calle=$request->calle;
         $nuevoUsuario->Distrito=$request->distrito;
+        $nuevoUsuario->Provincia=$request->provincia;
         $nuevoUsuario->Ciudad=$request->ciudad;
         $nuevoUsuario->CodPost=$request->codPostal;
         $nuevoUsuario->email=$request->correo;
-        $nuevoUsuario->Pass=Hash::make($request->pass);
+        $password=Hash::make($request->pass);
+        $nuevoUsuario->Pass=$password;
         $nuevoUsuario->save();
+        return redirect ('Usuario');
     }
 
     /**
