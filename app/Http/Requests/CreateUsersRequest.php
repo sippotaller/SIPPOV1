@@ -24,16 +24,17 @@ class CreateUsersRequest extends Request
     public function rules()
     {
         return [
-            'nombre' => 'required', 
-            'pais' => 'required', 
-            'provincia' => 'required', 
-            'distrito' => 'required',  
-            'ciudad' => 'required',
-            'calle' => 'required',  
-            'codPostal' => 'required',
-            'telefono' => 'required|digits_between:5,10',   
-            'correo' => 'required|email',
-            'pass' => 'required|min:5'
+            'Nombre' => 'required', 
+            'Pais' => 'required', 
+            'Provincia' => 'required', 
+            'Distrito' => 'required',  
+            'Ciudad' => 'required',
+            'Calle' => 'required',  
+            'CodPost' => 'required',
+            'Telefono' => 'required|digits_between:5,10',   
+            'email' => 'required|email|unique:TUsuario,email',
+            'Pass' => 'required|min:5',
+            'codUsuario' => 'required|unique:TUsuario,codUsuario'
         ];
     }
 }

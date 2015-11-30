@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\model\VListaPedidos;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -14,9 +14,10 @@ class TPedidoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $pedidos = \DB::table('listaPedidos')->paginate(5);
+        //$pedidos = \DB::table('listaPedidos')->paginate(5);
+        $pedidos=VListaPedidos::name($request->get('name'))->paginate(5);
         return view("Forms/Pedidos",["pedidos"=>$pedidos]);
     }
 

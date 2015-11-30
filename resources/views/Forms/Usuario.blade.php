@@ -28,73 +28,47 @@
             <div class="col-xs-12">  
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">
-                            Lista de Usuarios
-                        </h3>
+                        <div class="col-xs-4 pad">
+                            <h3 class="box-title">
+                                Lista de Usuarios
+                            </h3>
+                        </div>
+                        {!! Form::open(['route' => 'Usuario.index', 'method' => 'GET', 'role' => 'search']) !!}
+                        <div class="col-xs-6 pad form-group">
+                            {!! Form::text('name', null, ['class' => 'form-control','placeholder' => 'Buscar...']) !!}
+                             <!--input type="search" name="" id="input" class="form-control" value="" placeholder="Buscar" required="required" pattern="" title=""-->
+                        </div>
+                         {!! Form::close() !!}
+                        <div class="col-xs-2 pad"> 
+                            <a href={{route("Usuario.create")}} class="btn btn-primary">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            </a>
+                        </div>
                     </div>
                     <div class="box-body table-responsive">
                         <div class="dataTables_wrapper form-inline" role="grid">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <input type="search" name="" id="input" class="form-control" value="" placeholder="Buscar" required="required" pattern="" title="">
-                                </div>
-                                <div class="col-xs-6">
-                                    <div class="pull-right">
-                                        <a href={{route("Usuario.create")}} class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <table class="table table-bordered table-striped dataTable">
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>
+                                        <th>Usuario</th>
                                         <th>Teléfono</th>
                                         <th>E-mail</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($usuarios as $usuario)
                                     <tr>
-                                        <td><a href="#cliente/123">Jose Alvarado Santos</a></td>
-                                        <td>929872122</td>
-                                        <td>jose@alvarado.com</td>
+                                        <td>{{ $usuario->Nombre }}</td>
+                                        <td>{{ $usuario->codUsuario }}</td>
+                                        <td>{{ $usuario->Telefono }}</td>
+                                        <td>{{ $usuario->email }}</td>
                                     </tr>
-                                    <tr>
-                                        <td><a href="#cliente/123">Jose Alvarado Santos</a></td>
-                                        <td>929872122</td>
-                                        <td>jose@alvarado.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#cliente/123">Jose Alvarado Santos</a></td>
-                                        <td>929872122</td>
-                                        <td>jose@alvarado.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#cliente/123">Jose Alvarado Santos</a></td>
-                                        <td>929872122</td>
-                                        <td>jose@alvarado.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#cliente/123">Jose Alvarado Santos</a></td>
-                                        <td>929872122</td>
-                                        <td>jose@alvarado.com</td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
-                            <div class="row">
-                                <div class="pull-right">
-                                    <div class="col-xs-12">
-                                        <ul class="pagination">
-                                            <li><a href="#">&laquo;</a></li>
-                                            <li><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">4</a></li>
-                                            <li><a href="#">5</a></li>
-                                            <li><a href="#">&raquo;</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            {!! $usuarios->setPath('')->render() !!}﻿
                         </div>
                     </div>
                 </div>

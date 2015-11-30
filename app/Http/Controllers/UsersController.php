@@ -15,9 +15,10 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view("Forms/Usuario");
+        $listaUsuarios=TUsuario::name($request->get('name'))->paginate(8);
+        return view("Forms/Usuario",["usuarios"=>$listaUsuarios]);
     }
 
     /**
@@ -39,27 +40,8 @@ class UsersController extends Controller
     public function store(CreateUsersRequest $request)
     {   
        // dd($request);
-        $codUsuarioAnterior = \DB::table('tUsuario')->max('codUsuario');
-        if ($codUsuarioAnterior!='') {
-            $nuevoCodUsuario=$codUsuarioAnterior+1;
-        } else {
-            $nuevoCodUsuario=1;
-        }
-        
-        $nuevoCodUsuario=$codUsuarioAnterior+1;
-        $nuevoUsuario= new TUsuario();
-        $nuevoUsuario->codUsuario=$nuevoCodUsuario;//
-        $nuevoUsuario->Nombre=$request->nombre;
-        $nuevoUsuario->Telefono=$request->telefono;
-        $nuevoUsuario->Pais=$request->pais;
-        $nuevoUsuario->Calle=$request->calle;
-        $nuevoUsuario->Distrito=$request->distrito;
-        $nuevoUsuario->Provincia=$request->provincia;
-        $nuevoUsuario->Ciudad=$request->ciudad;
-        $nuevoUsuario->CodPost=$request->codPostal;
-        $nuevoUsuario->email=$request->correo;
-        $password=Hash::make($request->pass);
-        $nuevoUsuario->Pass=$password;
+        $nuevoUsuario= new TUsuario($request->all());
+        $nuevoUsuario->Pass=Hash::make($request->Pass);
         $nuevoUsuario->save();
         return redirect ('Usuario');
     }

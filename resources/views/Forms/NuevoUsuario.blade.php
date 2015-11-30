@@ -29,14 +29,14 @@
                                         <img src="{{URL::asset('img/user.png')}}" class="img-circle" width="80px">
                                     </div>
                                     <div class="col-xs-12 col-md-8 pad" style="padding-top:30px;">                
-                                        {!! Form::text('nombre', null, ['class' => 'form-control','placeholder' => 'Nombre']) !!}
+                                        {!! Form::text('Nombre', null, ['class' => 'form-control','placeholder' => 'Nombre']) !!}
                                     </div>
                                 </div>
                                 
                                 
                                 <div class="form-group pad">
                                     <div class="col-md-4 pad">
-                                        {!! Form::label('pais','País', ['class' => 'control-label']) !!}
+                                        {!! Form::label('Pais','País', ['class' => 'control-label']) !!}
                                     </div>
                                     <div class="col-xs-12 col-md-8 pad">
                                         <!--select class="form-control" id="pais">
@@ -45,12 +45,12 @@
                                             <option value="Ecuador">Ecuador</option>
                                             <option value="Bolivia">Bolivia</option>
                                         </select-->
-                                         {!! Form::select('pais', ['Peru' => 'Perú', 'Chile' => 'Chile', 'Ecuador' => 'Ecuador', 'Bolivia' => 'Bolivia'], null,  ['class' => 'form-control','placeholder' => 'Selecionar...']) !!}
+                                         {!! Form::select('Pais', ['Peru' => 'Perú', 'Chile' => 'Chile', 'Ecuador' => 'Ecuador', 'Bolivia' => 'Bolivia'], null,  ['class' => 'form-control','placeholder' => 'Selecionar...']) !!}
                                     </div>
                                 </div>  
                                 <div class="form-group pad">
                                     <div class="col-md-4 pad">
-                                        {!! Form::label('provincia','Provincia', ['class' => 'control-label']) !!}
+                                        {!! Form::label('Provincia','Provincia', ['class' => 'control-label']) !!}
                                     </div>
                                     <div class="col-xs-12 col-md-8 pad">
                                         <!--select class="form-control" id="pais">
@@ -59,12 +59,12 @@
                                             <option value="Ecuador">Ecuador</option>
                                             <option value="Bolivia">Bolivia</option>
                                         </select-->
-                                         {!! Form::select('provincia', ['Lima' => 'Lima', 'Huaral' => 'Huaral', 'Canta' => 'Canta'], null,  ['class' => 'form-control','placeholder' => 'Selecionar...']) !!}
+                                         {!! Form::select('Provincia', ['Lima' => 'Lima', 'Huaral' => 'Huaral', 'Canta' => 'Canta'], null,  ['class' => 'form-control','placeholder' => 'Selecionar...']) !!}
                                     </div>
                                 </div>  
                                 <div class="form-group pad">
                                     <div class="col-md-4 pad">
-                                        {!! Form::label('distrito','Distrito', ['class' => 'control-label']) !!}
+                                        {!! Form::label('Distrito','Distrito', ['class' => 'control-label']) !!}
                                     </div>
                                     <div class="col-xs-12 col-md-8 pad">
                                         <!--select class="form-control" id="pais">
@@ -73,32 +73,32 @@
                                             <option value="Ecuador">Ecuador</option>
                                             <option value="Bolivia">Bolivia</option>
                                         </select-->
-                                         {!! Form::select('distrito', ['Rimac' => 'Rímac', 'Comas' => 'Comas'], null,  ['class' => 'form-control','placeholder' => 'Selecionar...']) !!}
+                                         {!! Form::select('Distrito', ['Rimac' => 'Rímac', 'Comas' => 'Comas'], null,  ['class' => 'form-control','placeholder' => 'Selecionar...']) !!}
                                     </div>
                                 </div> 
                                 <div class="form-group pad">
                                     <div class="col-md-4 pad"> 
-                                        {!! Form::label('ciudad','Ciudad', ['class' => 'control-label']) !!}
+                                        {!! Form::label('Ciudad','Ciudad', ['class' => 'control-label']) !!}
                                     </div>
                                     <div class="col-xs-12 col-md-8 pad">          
-                                        {!! Form::text('ciudad', null, ['class' => 'form-control','placeholder' => 'Ciudad']) !!}
+                                        {!! Form::text('Ciudad', null, ['class' => 'form-control','placeholder' => 'Ciudad']) !!}
                                     </div>
                                 </div>
                                 <div class="form-group pad" >
                                     <div class="col-md-4 pad">
-                                        {!! Form::label('calle','Calle', ['class' => 'control-label']) !!}
+                                        {!! Form::label('Calle','Calle', ['class' => 'control-label']) !!}
                                      </div>
                                      <div class="col-xs-12 col-md-8 pad">
-                                        {!! Form::text('calle', null, ['class' => 'form-control','placeholder' => 'Calle']) !!}
+                                        {!! Form::text('Calle', null, ['class' => 'form-control','placeholder' => 'Calle']) !!}
                                     </div>
                                 </div>
                                   
                                 <div class="form-group pad">
                                     <div class="col-md-4 pad">
-                                        {!! Form::label('codPostal','Código Postal', ['class' => 'control-label']) !!}
+                                        {!! Form::label('CodPost','Código Postal', ['class' => 'control-label']) !!}
                                     </div>
                                     <div class="col-xs-12 col-md-8 pad">
-                                        {!! Form::text('codPostal', null, ['class' => 'form-control','placeholder' => 'Código Postal']) !!}
+                                        {!! Form::text('CodPost', null, ['class' => 'form-control','placeholder' => 'Código Postal']) !!}
                                     </div>
                                 </div>                        
                             <!--/form-->
@@ -107,26 +107,34 @@
                             <form role="form">
                                 <div class="form-group ">
                                     <div class="col-sm-4 pad">
-                                        {!! Form::label('telefono','Teléfono', ['class' => 'control-label']) !!}
+                                        {!! Form::label('Telefono','Teléfono', ['class' => 'control-label']) !!}
                                     </div>
                                     <div class="col-xs-12 col-sm-8 pad">
-                                        {!! Form::text('telefono', null, ['class' => 'form-control','placeholder' => 'Teléfono']) !!}
+                                        {!! Form::text('Telefono', null, ['class' => 'form-control','placeholder' => 'Teléfono']) !!}
                                     </div>
                                 </div>
                                 <div class="form-group ">
                                     <div class="col-sm-4 pad">
-                                        {!! Form::label('correo','Correo Electrónico', ['class' => 'control-label']) !!}
+                                        {!! Form::label('email','Correo Electrónico', ['class' => 'control-label']) !!}
                                     </div>
                                     <div class="col-xs-12 col-sm-8 pad">
-                                        {!! Form::text('correo', null, ['class' => 'form-control','placeholder' => 'ej. Juan@example.com']) !!}
+                                        {!! Form::text('email', null, ['class' => 'form-control','placeholder' => 'ej. Juan@example.com']) !!}
                                     </div>
                                 </div>
                                 <div class="form-group ">
                                     <div class="col-sm-4 pad">
-                                        {!! Form::label('pass','Contraseña', ['class' => 'control-label']) !!}
+                                        {!! Form::label('codUsuario','Usuario', ['class' => 'control-label']) !!}
                                     </div>
                                     <div class="col-xs-12 col-sm-8 pad">
-                                        {!! Form::password('pass', ['class' => 'form-control','placeholder' => 'Contraseña']) !!}
+                                        {!! Form::text('codUsuario', null, ['class' => 'form-control','placeholder' => 'Usuario']) !!}
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="col-sm-4 pad">
+                                        {!! Form::label('Pass','Contraseña', ['class' => 'control-label']) !!}
+                                    </div>
+                                    <div class="col-xs-12 col-sm-8 pad">
+                                        {!! Form::password('Pass', ['class' => 'form-control','placeholder' => 'Contraseña']) !!}
                                     </div>
                                 </div>
                             </form>

@@ -24,9 +24,11 @@
 							Lista de Pedidos
 						</h3>
 					</div>
+					{!! Form::open(['route' => 'Pedido.index', 'method' => 'GET', 'role' => 'search']) !!}
 					<div class="col-xs-6 pad">
-						<input type="search" placeholder="Buscar..." class="form-control">
+						{!! Form::text('name', null, ['class' => 'form-control','placeholder' => 'Buscar...']) !!}
 					</div>
+					{!! Form::close() !!}
 					<div class="col-xs-2 pad">
 						<a href="#nuevopedido" class="btn btn-plus btn-primary">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
