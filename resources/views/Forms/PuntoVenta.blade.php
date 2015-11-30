@@ -3,9 +3,35 @@
     <head>
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <title>Módulo de Ventas</title>
-        <link href="../css/style.css" rel="stylesheet" type="text/css">
-        <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="../css/AdminLTE.css" rel="stylesheet" type="text/css" />
+        <!-- bootstrap 3.0.2 -->
+        {!!HTML::style("css/bootstrap.min.css")!!}
+        <!-- font Awesome -->
+        {!!HTML::style("css/font-awesome.min.css")!!}
+        <!-- Ionicons -->
+        {!!HTML::style("css/ionicons.min.css")!!}
+        <!-- Morris chart -->
+        {!!HTML::style("css/morris/morris.css")!!}
+        <!-- jvectormap -->
+        {!!HTML::style("css/jvectormap/jquery-jvectormap-1.2.2.css")!!}
+        <!-- fullCalendar -->
+        {!!HTML::style("css/fullcalendar/fullcalendar.css")!!}
+        <!-- Daterange picker -->
+        {!!HTML::style("css/daterangepicker/daterangepicker-bs3.css")!!}
+        <!-- bootstrap wysihtml5 - text editor -->
+        {!!HTML::style("css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")!!}
+        <!-- Theme style -->
+        {!!HTML::style("css/AdminLTE.css")!!}
+
+        {!!HTML::style("css/Formularios.css")!!}
+
+        <style>
+            .cuerpo{
+                padding-top:80px;
+            }
+            .seleccionado{
+                color: green;
+            }
+        </style>
     </head>
     <body class="skin-blue">
         <div class="container-fluid">
@@ -14,7 +40,8 @@
                 <nav class="navbar navbar-default navbar-fixed-top" >
                     
                     <div class="navbar-header nav">
-                        <img src="../img/Icono_SIPPO.png" class="img-responsive nav navbar-nav navbar-left" alt="Image" width="100px">
+                        {!!HTML::image("img/Icono_SIPPO.png","alt",["class"=>"img-responsive nav navbar-nav navbar-left","width"=>"100px"])!!}
+                        
                         <a href="#" class="navbar-brand  ">Módulo de Ventas</a>
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar_1">
                         <span class="sr-only">Toggle navigation</span>
@@ -25,12 +52,12 @@
                     </div>
                     
                     <div class="collapse navbar-collapse navbar_1">
-                        <form action="" method="POST" class="navbar-form navbar-left" role="form">
+                        <div  class="navbar-form navbar-left" role="form">
                             <div class="form-group">
                                 <label class="sr-only" for="">label</label>
-                                <input type="search" class="form-control" id="" placeholder="Buscar">
+                                <input type="search" class="form-control" id="keywordProduct" placeholder="Buscar">
                             </div>
-                        </form>
+                        </div>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="#">Victor Daniel Moreno Lopez</a></li>
                         </ul>
@@ -59,7 +86,7 @@
                             </div>
                         </div>
                         
-                        
+                    
                     </form>
                     <table class="table table-striped table-hover">
                         <thead>
@@ -71,35 +98,8 @@
                                 <th>Cantidad</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>algo</td>
-                                <td>algo</td>
-                                <td>algo</td>
-                                <td>algo</td>
-                                <td>algo</td>
-                            </tr>
-                            <tr>
-                                <td>algo</td>
-                                <td>algo</td>
-                                <td>algo</td>
-                                <td>algo</td>
-                                <td>algo</td>
-                            </tr>
-                            <tr>
-                                <td>algo</td>
-                                <td>algo</td>
-                                <td>algo</td>
-                                <td>algo</td>
-                                <td>algo</td>
-                            </tr>
-                            <tr>
-                                <td>algo</td>
-                                <td>algo</td>
-                                <td>algo</td>
-                                <td>algo</td>
-                                <td>algo</td>
-                            </tr>
+                        <tbody id="ListProductos">
+                           
                         </tbody>
                     </table>
                 </div>
@@ -107,7 +107,7 @@
                     <div role="tabpanel">
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active">
-                                <a href="#venta_1" aria-controls="venta_1" role="tab" data-toggle="tab">Venta 1</a>
+                                <a href="#venta_1" aria-controls="venta_1" role="tab" data-toggle="tab">Venta 1 <span id="NombreCliente"></span></a>
                             </li>
                             <li role="presentation" >
                                 <a href="#venta_2" aria-controls="venta_1" role="tab" data-toggle="tab">Venta 2</a>
@@ -137,36 +137,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>algo 2</td>
-                                            <td>algo 2</td>
-                                            <td>algo 2</td>
-                                            <td>algo 2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>algo 2</td>
-                                            <td>algo 2</td>
-                                            <td>algo 2</td>
-                                            <td>algo 2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>algo 2</td>
-                                            <td>algo 2</td>
-                                            <td>algo 2</td>
-                                            <td>algo 2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>algo 2</td>
-                                            <td>algo 2</td>
-                                            <td>algo 2</td>
-                                            <td>algo 2</td>
-                                        </tr>
+                                       
                                     </tbody>
                                 </table>
                                 <form action="" method="POST" class="form-inline" role="form">
-                                    <label for="input-id" class="col-sm-4">Sub-Total: S/.150.00</label>
-                                    <label for="input-id" class="col-sm-4">ISLR(19%): S/.20.00</label>
-                                    <label for="input-id" class="col-sm-4">Total: S/.11.000</label>
+                                    <label for="input-id" id="subtotal" class="col-sm-4">Sub-Total: S/.00.00</label>
+                                    <label for="input-id" id="ISLR" class="col-sm-4">ISLR(19%): S/.00.00</label>
+                                    <label for="input-id" id="total" class="col-sm-4">Total: S/.00.00</label>
                                 </form>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="venta_2">
@@ -259,7 +236,7 @@
                     </div>
                     
                     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2">
-                        <a class="btn btn-success btn-lg btn-block" data-toggle="modal" href='#modal-id'>Vender</a>
+                        <a class="btn btn-success btn-lg btn-block" data-toggle="modal" id='btnventa'>Vender</a>
                     </div>
                 </div>
             </div>
@@ -273,10 +250,10 @@
                         <h4 class="modal-title">Seleccionar Cliente</h4>
                     </div>
                     <div class="modal-body">
-                        <form role="form">
+                        <div role="form">
                             <div class="form-group">
                                 <div class="col-xs-10 pad">
-                                    <input type="search"  class="form-control" placeholder="Buscar...">
+                                    <input type="search" id="searchClient" class="form-control" placeholder="Buscar...">
                                 </div>
                                 <div class="col-xs-2 pad">
                                     <div class="pull-right">
@@ -286,31 +263,18 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
+                                    <th>Código</th>
                                     <th>Tipo de Cliente</th>
                                     <th>Nombre</th>
                                     <th>Correo</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Cliente Frecuente</td>
-                                    <td>Pedro Dávila</td>
-                                    <td>pedrodavila99@gmail.com</td>
-                                </tr>
-                                <tr>
-                                    <td>Cliente Frecuente</td>
-                                    <td>Pedro Santos</td>
-                                    <td>pedrosantos@gmail.com</td>
-                                </tr>
-                                <tr>
-                                    <td>Cliente Ocasional</td>
-                                    <td>Pedro Anicama</td>
-                                    <td>pedroanicama@gmail.com</td>
-                                </tr>
+                            <tbody id="ListClientes">
+                                
                             </tbody>
                         </table>
                     </div>
@@ -343,7 +307,8 @@
                                                 <div class="form-group-lg" style="padding-bottom:90px;">
                                                     <div class="col-sm-4" >
                                                         <!-- <img class="img-responsive" src="img/camara.png" width="50px"> -->
-                                                        <img src="../img/client.png" class="img-circle" width="80px">
+                                                        {!!HTML::image("img/client.png","alt",["class"=>"img-circle","width"=>"80px"])!!}
+                                                        <!-- <img src="../img/client.png" class="img-circle" width="80px"> -->
                                                     </div>
                                                     <div class="col-xs-12 col-sm-8" style="padding-top:25px;">
                                                         <input class="form-control" type="text" placeholder="Nombre">
@@ -433,10 +398,12 @@
                                             </form>
                                         </div>
                                         <div class="col-xs-6 col-sm-1" style="opacity:60%">
-                                            <img class="img-responsive" src="../img/reload.png" width="40px" >
+                                            {!!HTML::image("img/reload.png","alt",["class"=>"img-circle","width"=>"40px"])!!}
+                                            <!-- <img class="img-responsive" src="../img/reload.png" width="40px" > -->
                                         </div>
                                         <div class="col-xs-6 col-sm-1" style="opacity:60%">
-                                            <img class="img-responsive" src="../img/save.png" width="60px" >
+                                            {!!HTML::image("img/save.png","alt",["class"=>"img-circle","width"=>"60px"])!!}
+                                            <!-- <img class="img-responsive" src="../img/save.png" width="60px" > -->
                                         </div>
                                     </div>
                                 </div>
@@ -450,7 +417,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="modal-id">
+        <div class="modal fade" id="modalventa">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -461,6 +428,7 @@
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Forma de Pago</h3>
+                                <input type="hidden" id="_token" class="form-control" value="<?php echo csrf_token()?>">
                             </div>
                             <div class="panel-body">
                                 <div role="tabpanel">
@@ -484,30 +452,30 @@
                                     <div class="tab-content">
                                         <div role="tabpanel" class="tab-pane active" id="formapago_1">
                                             <div class="col-xs-12">
-                                                <h2 style="text-align:center;">
-                                                S/. 5,30
+                                                <h2 id="montopago" style="text-align:center;">
+                                                
                                                 </h2>
                                             </div>
                                             <div class="col-xs-offset-2 col-xs-8">
-                                                <input type="number" class="form-control" >
+                                                <input type="number" id="entregado" class="form-control" >
                                             </div>
                                             <div class="col-xs-offset-2 col-xs-4">
-                                                <label class="label-control">Pagado :</label>
+                                                <label class="label-control" >Pagado :</label>
                                             </div>
                                             <div class="col-xs-6">
-                                                <label class="label-control">S/. 10,00</label>
+                                                <label class="label-control" id="pagado"> 00.00</label>
                                             </div>
                                             <div class="col-xs-offset-2 col-xs-4">
-                                                <label class="label-control">Restante :</label>
+                                                <label class="label-control" >Restante :</label>
                                             </div>
                                             <div class="col-xs-6">
-                                                <label class="label-control">S/. 0,00</label>
+                                                <label class="label-control" id="restante" >00.00</label>
                                             </div>
                                             <div class="col-xs-offset-2 col-xs-4">
                                                 <label class="label-control">Cambio :</label>
                                             </div>
                                             <div class="col-xs-6">
-                                                <label class="label-control">S/. 4,7</label>
+                                                <label class="label-control" id="cambio">00.00</label>
                                             </div>
                                             
                                         </div>
@@ -534,19 +502,19 @@
                                                 <label class="label-control">Pagado :</label>
                                             </div>
                                             <div class="col-xs-6">
-                                                <label class="label-control">S/. 10,00</label>
+                                                <label class="label-control" >S/. 00.00</label>
                                             </div>
                                             <div class="col-xs-offset-2 col-xs-4">
-                                                <label class="label-control">Restante :</label>
+                                                <label class="label-control" >Restante :</label>
                                             </div>
                                             <div class="col-xs-6">
-                                                <label class="label-control">S/. 0,00</label>
+                                                <label class="label-control"  >S/. 00.00</label>
                                             </div>
                                             <div class="col-xs-offset-2 col-xs-4">
                                                 <label class="label-control">Cambio :</label>
                                             </div>
                                             <div class="col-xs-6">
-                                                <label class="label-control">S/. 4,7</label>
+                                                <label class="label-control"  >S/. 00.00</label>
                                             </div>
                                         </div>
                                     </div>
@@ -561,16 +529,69 @@
                             <i class="glyphicon glyphicon-file" aria-hidden="true"></i> 
                             Factura 
                         </button>
-                        <button type="button" class="btn btn-primary">
+                        <button type="button" id="btnTransVenta" class="btn btn-primary">
                             <span class="glyphicon glyphicon-print" aria-hidden="true"></span> 
-                            Venta 
+                            Venta   
                         </button>
 
                     </div>
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="../js/jquery.min.js"></script>
-        <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+        
+        <div class="modal fade" id="setCantidadProducto">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Cantidad</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="number"  id="setCantidad" class="form-control" value=1 min=0  required="required">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" id="AgregarProducto">Agregar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <!-- jQuery 2.0.2 -->
+        <script src="http://prog.linkstraffic.net/jquery/jquery-2.1.1.js" type="text/javascript" charset="utf-8"></script>
+        <!-- {!!HTML::script("js/jquery-2.1.4.min.js")!!} -->
+        {!!HTML::script("js/jquery-ui-1.10.3.min.js")!!}
+        {!!HTML::script("js/bootstrap.min.js")!!}
+        {!!HTML::script("js/puntoventa/venta.js")!!}
+        {!!HTML::script("js/Angularjs/lib/underscore-min.js")!!}
+        {!!HTML::script("js/Angularjs/lib/angular.min.js")!!}
+        {!!HTML::script("js/Angularjs/lib/angular-route.min.js")!!}
+        {!!HTML::script("js/Angularjs/app.js")!!}
+        {!!HTML::script("js/Angularjs/controllers.js")!!}
+
+        <!-- Morris.js charts -->
+        {!!HTML::script("js/raphael-min.js")!!}
+        {!!HTML::script("js/plugins/morris/morris.min.js")!!}
+        <!-- Sparkline -->
+        {!!HTML::script("js/plugins/sparkline/jquery.sparkline.min.js")!!}
+        <!-- jvectormap -->
+        {!!HTML::script("js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js")!!}
+        {!!HTML::script("js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js")!!}
+        <!-- fullCalendar -->
+        {!!HTML::script("js/plugins/fullcalendar/fullcalendar.min.js")!!}
+        <!-- jQuery Knob Chart -->
+        {!!HTML::script("js/plugins/jqueryKnob/jquery.knob.js")!!}
+        <!-- daterangepicker -->
+        {!!HTML::script("js/plugins/daterangepicker/daterangepicker.js")!!}
+        <!-- Bootstrap WYSIHTML5 -->
+        {!!HTML::script("js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")!!}
+        <!-- iCheck -->
+        {!!HTML::script("js/plugins/iCheck/icheck.min.js")!!}
+
+        <!-- AdminLTE App -->
+        {!!HTML::script("js/AdminLTE/app.js")!!}
+        
+        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+        {!!HTML::script("js/AdminLTE/dashboard.js")!!}    
     </body>
 </html>

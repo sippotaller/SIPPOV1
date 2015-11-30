@@ -27,10 +27,11 @@ $router->controller('CatProducto', 'TCatProductoController',
 					,"postStore"=>"CatProducto.store"]);
 
 $router->resource('Cuantia', 'TCuantiaController');
-$router->resource('Cliente', 'CtaClienteController');
+
 $router->resource('Cliente/CtaCliente', 'TCtaClienteController');
 $router->resource('Marca', 'TMarcaController');
-
+$router->controller('puntoventa', 'puntoVentaController',
+					["getIndex"=>"puntoventa.index"]);
 
 
 
