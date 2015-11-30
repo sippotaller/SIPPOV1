@@ -45,6 +45,9 @@
                             </a>
                         </div>
                     </div>
+                    @if(Session::has('message'))
+                                <p class="alert alert-success">{{ Session::get('message') }}</p>
+                    @endif
                     <div class="box-body table-responsive">
                         <div class="dataTables_wrapper form-inline" role="grid">
                             

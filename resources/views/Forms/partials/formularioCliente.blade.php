@@ -40,6 +40,7 @@
 			                        <div class="col-xs-12 col-sm-8 pad">
 			                            {!! Form::select('region', ['Lima' => 'Lima', 'Huaral' => 'Huaral', 'Canta' => 'Canta'], null,  ['class' => 'form-control','placeholder' => 'Selecionar...']) !!}
 			                        </div>
+			                        
 			                    </div>  
 			                    <div class="form-group ">
 			                        <div class="col-sm-4 pad">

@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Requests\CreateCtaClienteRequest;
 use App\Http\Requests\EditCtaClienteRequest;
 use Carbon\Carbon;
-
+use DB;
 class TCtaClienteController extends Controller
 {
 
@@ -39,10 +39,17 @@ class TCtaClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+   /* public function index(Request $request)
     {
+        $funciona='funciona';
+        dd($funciona);
     $listaClientes=TListaClientes::name($request->get('name'))->paginate(8);
     return view("Forms/Cliente",["personas"=>$listaClientes]);
+    }*/
+    public function getIndex()
+    {
+        $funciona='funciona';
+        dd($funciona);
     }
 
     /**
@@ -52,6 +59,8 @@ class TCtaClienteController extends Controller
      */
     public function create()
     {
+       // $departamentos=DB::table("ubigeo")->select('departamento')->distinct()->get();
+        //return view("Forms/NuevoCliente",["departamentos"=>$departamentos]);
         return view("Forms/NuevoCliente");
     }
 
@@ -108,6 +117,8 @@ class TCtaClienteController extends Controller
         $cliente->codCatCliente=111;
         $cliente->codPersona=$nuevoCodPersona;
         $cliente->save();   
+        $message='Cliente añadido';
+        Session::flash('message', $message);
         return redirect ('Cliente/CtaCliente');
     }
 
@@ -198,5 +209,12 @@ class TCtaClienteController extends Controller
 
         Session::flash('message', $message);
         return redirect ('Cliente');
+    }
+
+    public function getListProvincia($departamento){
+        return DB::table("ubigeo")->where("departamento","=",$departamento)->select('provincia')->distinct()->get();
+    }
+    public function getListDistriro($provincia){
+        return DB::table("ubigeo")->where("provincia","=",$provincia)->select('distrito')->distinct()->get();
     }
 }
