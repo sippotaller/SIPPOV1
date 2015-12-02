@@ -35,6 +35,7 @@ class puntoVentaController extends Controller
 
     public function postVenta(Request $request){
         return $request->all();
+        
     }
     public function create()
     {
