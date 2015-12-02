@@ -7,6 +7,7 @@ use App\model\TUsuario;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateUsersRequest;
+use Illuminate\Support\Facades\Session;
 
 class UsersController extends Controller
 {
@@ -43,6 +44,8 @@ class UsersController extends Controller
         $nuevoUsuario= new TUsuario($request->all());
         $nuevoUsuario->Pass=Hash::make($request->Pass);
         $nuevoUsuario->save();
+        $message='Usuario añadido';
+        Session::flash('message', $message);
         return redirect ('Usuario');
     }
 

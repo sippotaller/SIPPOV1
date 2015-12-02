@@ -337,7 +337,7 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href={{route("Cliente.CtaCliente.index")}}><i class="fa fa-angle-double-right"></i> Clientes</a></li>
+                                <li><a href="{{route('Cliente.CtaCliente.index')}}"><i class="fa fa-angle-double-right"></i> Clientes</a></li>
                                 <li><a href="{{ route('Pedido.index') }}"><i class="fa fa-angle-double-right"></i> Pedidos</a></li>
                                 <li><a href={{route("puntoventa.index")}}><i class="fa fa-angle-double-right"></i> Punto de Venta <i class="fa fa-external-link-square"></i></a></li>
                             </ul>
@@ -474,7 +474,7 @@
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
         {!!HTML::script("js/AdminLTE/dashboard.js")!!}    
         
-       
+        {!!HTML::script("js/Ubicacion.js")!!}
         
     </body>
 </html>
