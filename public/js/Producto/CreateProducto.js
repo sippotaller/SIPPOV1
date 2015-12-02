@@ -181,6 +181,7 @@ $(document).ready(function() {
 		token=$("#_token").val();
 		Desc=$("#Res_Descripcion").val();
 		Prec=$("#Res_Precio").val();
+		cantidad=$("#Res_Cantidad").val();
 		$("#errorProductoTipoProducto").text("");
 		$("#errorProductoMarca").text("");
 		$("#errorProductoCuantia").text("");
@@ -193,6 +194,7 @@ $(document).ready(function() {
 			,codTipoProducto:codTipoProducto
 			,codCuantia:codCuantia
 			,codMarca:codMarca
+			,cantidad:cantidad
 			,_token:token}, 
 			function(data, textStatus, xhr) {
 				$("#statusProducto").text(data["status"]);
@@ -204,6 +206,7 @@ $(document).ready(function() {
 					$("#errorProductoUM").text(data["messages"]["codUM"]);
 					$("#errorProductoDescripcion").text(data["messages"]["desc"]);
 					$("#errorProductoPrecio").text(data["messages"]["prec"]);
+					$("#errorProductoCantidad").text(data["messages"]["cantidad"]);
 				}
 		});
 		

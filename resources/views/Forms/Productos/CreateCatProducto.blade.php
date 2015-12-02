@@ -244,6 +244,14 @@
 							</div>
 							<label id="errorProductoDescripcion" class="col-sm-5"></label>
 						</div>
+						
+						<div class="form-group">
+							<label for="input" class="control-label col-sm-5">Cantidad :</label>
+							<div class="col-sm-5">
+								<input id="Res_Cantidad"type="number" class="form-control">
+							</div>
+							<label id="errorProductoCantidad" class="col-sm-5"></label>
+						</div>
 
 						<div class="form-group">
 							<label for="input" class="control-label col-sm-5">Precio :</label>
@@ -252,7 +260,7 @@
 							</div>
 							<label id="errorProductoPrecio" class="col-sm-5"></label>
 						</div>
-
+					
 						<div class="form-group">
 							<button class="btn-success col-xs-offset-10" id="btnNuevoProducto">Crear</button>
 						</div>

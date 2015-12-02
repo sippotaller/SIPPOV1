@@ -28,16 +28,13 @@ $router->controller('CatProducto', 'TCatProductoController',
 
 $router->resource('Cuantia', 'TCuantiaController');
 
-$router->resource('Cliente/CtaCliente', 'TCtaClienteController');
+
 $router->resource('Marca', 'TMarcaController');
 $router->controller('puntoventa', 'puntoVentaController',
 					["getIndex"=>"puntoventa.index"]);
 
 
 
-//$router->resource('Cliente', 'CtaClienteController');
-//$router->resource('Cliente/CtaCliente', 'TCtaClienteController');
-//$router->controller('Cliente/CatCliente', 'CatClienteController');
 $router->resource('Usuario','UsersController');
 $router->resource('AsignarPermisos','AsignarPermisosController');
 
